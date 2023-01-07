@@ -312,7 +312,7 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelkentang" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="jLabel6" alignment="0" pref="69" max="32767" attributes="0"/>
@@ -322,8 +322,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jSpinner1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jCheckBoxKentang" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinnerKentang" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -346,7 +346,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageKentang" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelkentang" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -354,13 +354,13 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jSpinner1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jSpinnerKentang" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxKentang" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -380,7 +380,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageKentang">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel3">
+                    <Component class="javax.swing.JLabel" name="jLabelkentang">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -412,7 +412,7 @@
                         <Property name="text" type="java.lang.String" value="Item       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner1">
+                    <Component class="javax.swing.JSpinner" name="jSpinnerKentang">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -430,15 +430,12 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxKentang">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="14" style="0"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel8">
                       <Properties>
@@ -505,12 +502,12 @@
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jLabel25" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="jSpinner5" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="jSpinnerRotiBakar" alignment="1" max="32767" attributes="0"/>
                                           </Group>
-                                          <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBoxRotibakar" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelRoti" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -531,7 +528,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageRoti" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelRoti" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -539,13 +536,13 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jSpinner5" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jSpinnerRotiBakar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel27" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxRotibakar" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -565,7 +562,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageRoti">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel23">
+                    <Component class="javax.swing.JLabel" name="jLabelRoti">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -597,7 +594,7 @@
                         <Property name="text" type="java.lang.String" value="Item      :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner5">
+                    <Component class="javax.swing.JSpinner" name="jSpinnerRotiBakar">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -621,15 +618,12 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxRotibakar">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox5ActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel11">
                       <Properties>
@@ -686,7 +680,7 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel28" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelindomie" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -707,9 +701,9 @@
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jLabel30" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="jSpinner6" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="jSpinnerindomie" alignment="1" max="32767" attributes="0"/>
                                           </Group>
-                                          <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBoxindomie" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -722,7 +716,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageIndomie" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelindomie" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -730,13 +724,13 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jSpinner6" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jSpinnerindomie" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel32" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxindomie" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -756,7 +750,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageIndomie">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel28">
+                    <Component class="javax.swing.JLabel" name="jLabelindomie">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -788,7 +782,7 @@
                         <Property name="text" type="java.lang.String" value="Item      :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner6">
+                    <Component class="javax.swing.JSpinner" name="jSpinnerindomie">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -809,15 +803,12 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox6">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxindomie">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox6ActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel20">
                       <Properties>
@@ -884,12 +875,12 @@
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jLabel35" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="jSpinner7" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="jSpinnerdimsum" alignment="1" max="32767" attributes="0"/>
                                           </Group>
-                                          <Component id="jCheckBox7" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBoxdimsum" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jLabel33" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelDimsum" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -910,7 +901,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageDimsum" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelDimsum" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -918,13 +909,13 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jSpinner7" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jSpinnerdimsum" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox7" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxdimsum" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -944,7 +935,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageDimsum">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel33">
+                    <Component class="javax.swing.JLabel" name="jLabelDimsum">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -976,7 +967,7 @@
                         <Property name="text" type="java.lang.String" value="Item      :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner7">
+                    <Component class="javax.swing.JSpinner" name="jSpinnerdimsum">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -994,15 +985,12 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox7">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxdimsum">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox7ActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel69">
                       <Properties>
@@ -1069,12 +1057,12 @@
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jLabel40" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jSpinner8" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jSpinnerwaffle" alignment="0" max="32767" attributes="0"/>
                                           </Group>
-                                          <Component id="jCheckBox8" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBoxwaffle" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jLabel38" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelWaffle" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel73" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -1095,7 +1083,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageWaffle" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelWaffle" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1104,12 +1092,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jSpinnerwaffle" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel42" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxwaffle" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -1129,7 +1117,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageWaffle">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel38">
+                    <Component class="javax.swing.JLabel" name="jLabelWaffle">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -1161,7 +1149,7 @@
                         <Property name="text" type="java.lang.String" value="Item         :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner8">
+                    <Component class="javax.swing.JSpinner" name="jSpinnerwaffle">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -1179,15 +1167,12 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox8">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxwaffle">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox8ActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel73">
                       <Properties>
@@ -1252,12 +1237,12 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jCheckBox9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBoxburger" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel45" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jSpinner9" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jSpinnerburger" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jLabel43" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelBurger" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel77" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -1278,7 +1263,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageBurger" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelBurger" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel44" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1287,12 +1272,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel46" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner9" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jSpinnerburger" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel47" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxburger" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="8" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -1312,7 +1297,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageBurger">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel43">
+                    <Component class="javax.swing.JLabel" name="jLabelBurger">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -1344,7 +1329,7 @@
                         <Property name="text" type="java.lang.String" value="Item      :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner9">
+                    <Component class="javax.swing.JSpinner" name="jSpinnerburger">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -1362,15 +1347,12 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox9">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxburger">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox9ActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel77">
                       <Properties>
@@ -1436,11 +1418,11 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel50" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jSpinner10" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox10" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinnerspagetti" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jCheckBoxspageti" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jLabel48" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelSpaghetti" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel81" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -1461,7 +1443,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageSpagetti" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelSpaghetti" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel49" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1470,12 +1452,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel51" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner10" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jSpinnerspagetti" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel52" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxspageti" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="8" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -1495,7 +1477,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageSpagetti">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel48">
+                    <Component class="javax.swing.JLabel" name="jLabelSpaghetti">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -1527,7 +1509,7 @@
                         <Property name="text" type="java.lang.String" value="Item      :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner10">
+                    <Component class="javax.swing.JSpinner" name="jSpinnerspagetti">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -1545,15 +1527,12 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox10">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxspageti">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox10ActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel81">
                       <Properties>
@@ -1619,11 +1598,11 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel55" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jSpinner11" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox11" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinneronion" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jCheckBoxonion" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jLabel53" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelOnionRing" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel85" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -1644,7 +1623,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageOnion" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel53" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelOnionRing" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel54" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1653,12 +1632,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel56" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner11" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jSpinneronion" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel57" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxonion" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -1678,7 +1657,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageOnion">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel53">
+                    <Component class="javax.swing.JLabel" name="jLabelOnionRing">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -1710,7 +1689,7 @@
                         <Property name="text" type="java.lang.String" value="Item      :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner11">
+                    <Component class="javax.swing.JSpinner" name="jSpinneronion">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -1728,15 +1707,12 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox11">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxonion">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox11ActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel85">
                       <Properties>
@@ -1802,11 +1778,11 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel60" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jSpinner12" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox12" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinnersosis" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jCheckBoxsosis" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jLabel58" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelSosisGoreng" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel89" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -1827,7 +1803,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageSosis" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel58" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelSosisGoreng" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel59" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1836,12 +1812,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel61" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner12" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jSpinnersosis" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel62" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxsosis" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -1861,7 +1837,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageSosis">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel58">
+                    <Component class="javax.swing.JLabel" name="jLabelSosisGoreng">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -1893,7 +1869,7 @@
                         <Property name="text" type="java.lang.String" value="Item      :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner12">
+                    <Component class="javax.swing.JSpinner" name="jSpinnersosis">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -1911,15 +1887,12 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox12">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxsosis">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox12ActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel89">
                       <Properties>
@@ -1985,11 +1958,11 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel65" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jSpinner13" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox13" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinnernnasgor" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jCheckBoxnasgor" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jLabel63" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelNasiGoreng" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel93" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -2010,7 +1983,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageNasgor" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel63" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelNasiGoreng" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel64" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2019,12 +1992,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel66" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner13" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jSpinnernnasgor" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel67" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxnasgor" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -2044,7 +2017,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageNasgor">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel63">
+                    <Component class="javax.swing.JLabel" name="jLabelNasiGoreng">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -2076,7 +2049,7 @@
                         <Property name="text" type="java.lang.String" value="Item      :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner13">
+                    <Component class="javax.swing.JSpinner" name="jSpinnernnasgor">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -2094,15 +2067,12 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox13">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxnasgor">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox13ActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel93">
                       <Properties>
@@ -2233,7 +2203,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel98" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelAmericano" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="jLabel101" alignment="0" pref="69" max="32767" attributes="0"/>
@@ -2243,8 +2213,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel100" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jSpinner2" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinneramericano" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jCheckBoxamericano" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -2267,7 +2237,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageAmericano" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel98" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelAmericano" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel99" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2276,12 +2246,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel101" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jSpinneramericano" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel102" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxamericano" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -2301,7 +2271,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageAmericano">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel98">
+                    <Component class="javax.swing.JLabel" name="jLabelAmericano">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -2333,7 +2303,7 @@
                         <Property name="text" type="java.lang.String" value="Item       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner2">
+                    <Component class="javax.swing.JSpinner" name="jSpinneramericano">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -2348,14 +2318,14 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxamericano">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="14" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxamericanoActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel103">
@@ -2413,7 +2383,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel107" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelCoffeLatte" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="jLabel110" alignment="0" pref="69" max="32767" attributes="0"/>
@@ -2423,8 +2393,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel109" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jSpinner4" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox4" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinnercoffelatte" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jCheckBoxcoffelatte" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -2447,7 +2417,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageCoffeLatte" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel107" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelCoffeLatte" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel108" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2456,12 +2426,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel110" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jSpinnercoffelatte" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel111" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxcoffelatte" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -2481,7 +2451,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageCoffeLatte">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel107">
+                    <Component class="javax.swing.JLabel" name="jLabelCoffeLatte">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -2513,7 +2483,7 @@
                         <Property name="text" type="java.lang.String" value="Item       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner4">
+                    <Component class="javax.swing.JSpinner" name="jSpinnercoffelatte">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -2528,14 +2498,14 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxcoffelatte">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="14" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox4ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxcoffelatteActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel112">
@@ -2593,7 +2563,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel116" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelIceTea" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="jLabel119" alignment="0" pref="69" max="32767" attributes="0"/>
@@ -2603,8 +2573,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel118" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jSpinner14" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox14" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinnericetea" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jCheckBoxicetea" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -2627,7 +2597,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageIceTea" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel116" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelIceTea" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel117" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2636,12 +2606,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel119" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jSpinnericetea" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel120" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxicetea" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -2661,7 +2631,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageIceTea">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel116">
+                    <Component class="javax.swing.JLabel" name="jLabelIceTea">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -2693,7 +2663,7 @@
                         <Property name="text" type="java.lang.String" value="Item       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner14">
+                    <Component class="javax.swing.JSpinner" name="jSpinnericetea">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -2708,14 +2678,14 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox14">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxicetea">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="14" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox14ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxiceteaActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel121">
@@ -2773,7 +2743,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel125" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelLycheetea" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="jLabel128" alignment="0" pref="69" max="32767" attributes="0"/>
@@ -2783,8 +2753,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel127" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jSpinner15" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox15" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinnerlycheetea" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jCheckBoxlycheetea" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -2807,7 +2777,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageLycheetea" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel125" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelLycheetea" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel126" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2816,12 +2786,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel128" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jSpinnerlycheetea" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel129" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxlycheetea" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -2841,7 +2811,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageLycheetea">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel125">
+                    <Component class="javax.swing.JLabel" name="jLabelLycheetea">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -2873,7 +2843,7 @@
                         <Property name="text" type="java.lang.String" value="Item       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner15">
+                    <Component class="javax.swing.JSpinner" name="jSpinnerlycheetea">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -2888,14 +2858,14 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox15">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxlycheetea">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="14" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox15ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxlycheeteaActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel130">
@@ -2953,7 +2923,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel134" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelLemonTea" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="jLabel137" alignment="0" pref="69" max="32767" attributes="0"/>
@@ -2963,8 +2933,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel136" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jSpinner16" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox16" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinnerlemontea" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jCheckBoxlemontea" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -2987,7 +2957,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageLemonTea" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel134" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelLemonTea" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel135" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2996,12 +2966,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel137" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jSpinnerlemontea" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel138" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox16" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxlemontea" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -3021,7 +2991,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageLemonTea">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel134">
+                    <Component class="javax.swing.JLabel" name="jLabelLemonTea">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -3053,7 +3023,7 @@
                         <Property name="text" type="java.lang.String" value="Item       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner16">
+                    <Component class="javax.swing.JSpinner" name="jSpinnerlemontea">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -3068,14 +3038,14 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox16">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxlemontea">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="14" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox16ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxlemonteaActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel139">
@@ -3133,7 +3103,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel143" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelMatchaLatte" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="jLabel146" alignment="0" pref="69" max="32767" attributes="0"/>
@@ -3143,8 +3113,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel145" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jSpinner17" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox17" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinnermatchalatte" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jCheckBoxmatchalatte" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -3167,7 +3137,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageMatcha" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel143" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelMatchaLatte" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel144" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -3176,12 +3146,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel146" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jSpinnermatchalatte" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel147" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox17" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxmatchalatte" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -3201,7 +3171,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageMatcha">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel143">
+                    <Component class="javax.swing.JLabel" name="jLabelMatchaLatte">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -3233,7 +3203,7 @@
                         <Property name="text" type="java.lang.String" value="Item       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner17">
+                    <Component class="javax.swing.JSpinner" name="jSpinnermatchalatte">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -3248,14 +3218,14 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox17">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxmatchalatte">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="14" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox17ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxmatchalatteActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel148">
@@ -3313,7 +3283,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel152" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelRedVelvet" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="jLabel155" alignment="0" pref="69" max="32767" attributes="0"/>
@@ -3323,8 +3293,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel154" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jSpinner18" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox18" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinnerredvelvet" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jCheckBoxredvelvet" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -3347,7 +3317,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageRedvelvet" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel152" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelRedVelvet" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel153" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -3356,12 +3326,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel155" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner18" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jSpinnerredvelvet" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel156" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox18" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxredvelvet" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -3381,7 +3351,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageRedvelvet">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel152">
+                    <Component class="javax.swing.JLabel" name="jLabelRedVelvet">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -3413,7 +3383,7 @@
                         <Property name="text" type="java.lang.String" value="Item       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner18">
+                    <Component class="javax.swing.JSpinner" name="jSpinnerredvelvet">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -3428,14 +3398,14 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox18">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxredvelvet">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="14" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox18ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxredvelvetActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel157">
@@ -3493,7 +3463,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel161" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelTaroLatte" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="jLabel164" alignment="0" pref="69" max="32767" attributes="0"/>
@@ -3503,8 +3473,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel163" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jSpinner19" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox19" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinnertarolatte" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jCheckBoxtarolatte" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -3527,7 +3497,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageTaro" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel161" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelTaroLatte" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel162" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -3536,12 +3506,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel164" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner19" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jSpinnertarolatte" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel165" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox19" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxtarolatte" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -3561,7 +3531,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageTaro">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel161">
+                    <Component class="javax.swing.JLabel" name="jLabelTaroLatte">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -3593,7 +3563,7 @@
                         <Property name="text" type="java.lang.String" value="Item       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner19">
+                    <Component class="javax.swing.JSpinner" name="jSpinnertarolatte">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -3608,14 +3578,14 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox19">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxtarolatte">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="14" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox19ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxtarolatteActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel166">
@@ -3673,7 +3643,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel170" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelVanilaLatte" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="jLabel173" alignment="0" pref="69" max="32767" attributes="0"/>
@@ -3683,8 +3653,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel172" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jSpinner20" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox20" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinnervanilalatte" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jCheckBoxvanilalatte" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -3707,7 +3677,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelimageVanila" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel170" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelVanilaLatte" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel171" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -3716,12 +3686,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel173" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner20" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jSpinnervanilalatte" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel174" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox20" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxvanilalatte" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -3741,7 +3711,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabelimageVanila">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel170">
+                    <Component class="javax.swing.JLabel" name="jLabelVanilaLatte">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="18" style="1"/>
@@ -3773,7 +3743,7 @@
                         <Property name="text" type="java.lang.String" value="Item       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner20">
+                    <Component class="javax.swing.JSpinner" name="jSpinnervanilalatte">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -3788,14 +3758,14 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox20">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxvanilalatte">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="14" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox20ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxvanilalatteActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel175">
@@ -3863,8 +3833,8 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel181" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jSpinner21" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox21" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinnerchocolatte" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jCheckBoxchocolatte" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -3896,12 +3866,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel182" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSpinner21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jSpinnerchocolatte" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel183" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox21" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBoxchocolatte" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -3953,7 +3923,7 @@
                         <Property name="text" type="java.lang.String" value="Item       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="jSpinner21">
+                    <Component class="javax.swing.JSpinner" name="jSpinnerchocolatte">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -3968,14 +3938,14 @@
                         <Property name="text" type="java.lang.String" value="Beli       :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox21">
+                    <Component class="javax.swing.JCheckBox" name="jCheckBoxchocolatte">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="14" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox21ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxchocolatteActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel184">
@@ -4073,9 +4043,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="RESET"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>

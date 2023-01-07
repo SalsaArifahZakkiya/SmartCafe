@@ -1,7 +1,9 @@
 
 package Model;
 
+import Controller.MenuController;
+import View.MenuView;
+
 public interface Inputable {
-   public abstract void inputDataMenu(MenuModel menu, int qty); 
-   public abstract void removeDataMenu(int index);
+   public abstract void inputDataMenu(MenuView mv, int x); 
 }

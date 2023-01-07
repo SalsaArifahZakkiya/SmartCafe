@@ -3,36 +3,53 @@ package Model;
 
 
 public abstract class MenuModel implements Inputable{
-    private int idMenu;
     private String nama;
     private double harga;
-    
-    //private static int favorite;
-    //private static int JumlahTejual;
-    //private String[] ArrayFeedback;
-
-    @Override
-    public abstract void inputDataMenu(MenuModel menu, int qty); 
-    public abstract void removeDataMenu(int index);
+    private int qty;
+    private static int favorite;
+    private static int JumlahTejual;
+    private String[] ArrayFeedback;
     
     public MenuModel() {}
 
-    //buat di database
-    public MenuModel(String nama, double harga) {
-        this.idMenu = -1;
+    public MenuModel(String nama, double harga, int qty) {
         this.nama = nama;
         this.harga = harga;
+        this.qty = qty;
     }
 
-    public MenuModel(int idMenu, String nama, double harga) {
-        this.idMenu = idMenu;
-        this.nama = nama;
-        this.harga = harga;
+    public static int getFavorite() {
+        return favorite;
     }
 
-    public int getIdMenu() {
-        return idMenu;
+    public static int getJumlahTejual() {
+        return JumlahTejual;
     }
+
+    public String[] getArrayFeedback() {
+        return ArrayFeedback;
+    }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public static void setFavorite(int favorite) {
+        MenuModel.favorite = favorite;
+    }
+
+    public static void setJumlahTejual(int JumlahTejual) {
+        MenuModel.JumlahTejual = JumlahTejual;
+    }
+
+    public void setArrayFeedback(String[] ArrayFeedback) {
+        this.ArrayFeedback = ArrayFeedback;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+    
 
     public String getNama() {
         return nama;
@@ -42,17 +59,16 @@ public abstract class MenuModel implements Inputable{
         return harga;
     }
 
-
-    public void setIdMenu(int idMenu) {
-        this.idMenu = idMenu;
-    }
-
     public void setNama(String nama) {
         this.nama = nama;
     }
 
     public void setHarga(double harga) {
         this.harga = harga;
+    }
+    
+    public static double getPrice(double harga, int qty){
+        return harga * qty;
     }
     
    /*  

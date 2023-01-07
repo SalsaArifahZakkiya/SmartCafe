@@ -7,33 +7,28 @@ import java.util.List;
 
 public class Pesanan {
     private int IDPesanan;
-    private List<Makanan> listmenumakananpesan;
-    private List<Minuman> listmenuminumanpesan;
-    private String NamaPemesan;
+    private List<MenuModel> listmenupesan;
     private String NoMeja;
     private String CatatanPesanan;
-    private int JumlahPesanan;
+    private List<MenuModel> Item;
     private String Feedback;
     private LocalDateTime TanggalPesanan;
     private boolean status;
+    private int total;
 
     public Pesanan() {
        this.IDPesanan = -1;
-        this.listmenumakananpesan = new ArrayList<Makanan>();
-        this.listmenuminumanpesan = new ArrayList<Minuman>();
+        this.listmenupesan = new ArrayList<MenuModel>();
         this.TanggalPesanan = LocalDateTime.now(); 
         this.status = false;
     }
 
     
-    public Pesanan(int IDPesanan, List<Makanan> listmenumakananpesan, List<Minuman> listmenuminumanpesan, String NamaPemesan, String NoMeja, String CatatanPesanan, int JumlahPesanan, String Feedback, LocalDateTime TanggalPesanan, boolean status) {
+    public Pesanan(int IDPesanan, List<Makanan> listmenumakananpesan, List<Minuman> listmenuminumanpesan, String NoMeja, String CatatanPesanan, String Feedback, LocalDateTime TanggalPesanan, boolean status) {
         this.IDPesanan = IDPesanan;
-        this.listmenumakananpesan = new ArrayList<Makanan>();
-        this.listmenuminumanpesan = new ArrayList<Minuman>();
-        this.NamaPemesan = NamaPemesan;
+        this.listmenupesan = new ArrayList<MenuModel>();
         this.NoMeja = NoMeja;
         this.CatatanPesanan = CatatanPesanan;
-        this.JumlahPesanan = JumlahPesanan;
         this.Feedback = Feedback;
         this.TanggalPesanan = TanggalPesanan;
         this.status = status;
@@ -46,21 +41,13 @@ public class Pesanan {
     public boolean isStatus() {
         return status;
     }
-
-    public int getTotal(){
-        if(this.listmenumakananpesan.equals(this.listmenumakananpesan)){
-            int total = 0;
-            for (Makanan m : listmenumakananpesan){
-                total += m.getHarga();
-            }
-            return total;
-        }else {
-            int total = 0;
-            for (Minuman m : listmenuminumanpesan){
-                total += m.getHarga();
-            }
-            return total;
-        }
-    }
+//
+//    public int getTotalMakanan(){
+//            int total = 0;
+//            for (MenuModel m : listmenupesan){
+//                total += m.getHarga();
+//            }
+//            return total;
+//    }
     
 }
