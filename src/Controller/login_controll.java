@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package controller;
+import View.MenuView;
 import com.mysql.cj.protocol.Resultset;
 import com.sun.glass.ui.Cursor;
 import model.login;
@@ -25,7 +26,7 @@ import controller.Connections;
 public class login_controll {
     private LoginPage frame1;
     private AdminPage frame2;
-    private Customer_Page frame3;
+    private MenuView frame3;
 
 public login_controll(LoginPage login){
     frame1=login;
@@ -57,7 +58,7 @@ public login_controll(LoginPage login){
                     frame1.dispose();
                 }
                 if(role.equalsIgnoreCase("Customer")&&s1.equalsIgnoreCase("customer")){
-                   frame3 = new Customer_Page(nama);
+                   frame3 = new MenuView();
                    
                    frame3.setVisible(true);
                    frame1.dispose();

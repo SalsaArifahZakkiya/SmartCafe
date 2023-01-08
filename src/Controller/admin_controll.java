@@ -150,11 +150,19 @@ public class admin_controll implements SimpanAdmin{
         public void actionPerformed(ActionEvent e) {
             DefaultTableModel tabelmodel = (DefaultTableModel)adm.getJTable().getModel();
             int row = adm.getJTable().getSelectedRow();
-            int id =Integer.valueOf(adm.getJTable().getValueAt(row, 0).toString());
+            
             String n = adm.getJTextNama().getText();
-            int h=  Integer.parseInt(adm.getJTextHarga().getText());
-            int j = Integer.parseInt(adm.getJTextJumlah().getText());
-            try{
+            
+            if(adm.getJTable().getSelectedRow() == -1){
+                JOptionPane.showMessageDialog(adm, "Belum memilih tabelnya");
+            }
+            else if (adm.getJTextNama().getText().equals("")||adm.getJTextHarga().getText().equals("")||adm.getJTextJumlah().getText().equals("")){
+                JOptionPane.showMessageDialog(adm, "Ada yg kosong");
+            }else{
+                try{
+                int id =Integer.valueOf(adm.getJTable().getValueAt(row, 0).toString());
+                int h=  Integer.parseInt(adm.getJTextHarga().getText());
+                int j = Integer.parseInt(adm.getJTextJumlah().getText());
                 Connection con = Connections.getConnection();
                 Statement st = con.createStatement();
                 st.executeUpdate("DELETE FROM menu_table WHERE id="+id+"");
@@ -166,24 +174,18 @@ public class admin_controll implements SimpanAdmin{
             adm.reset();
             adm.showtampil();
         }
+            }
+            }
+            
     
-    }
+    
     
     public void savemenu(String n,int h,int j){
         
     }
     
     public void updatemenu(String n,int h ,int j){
-//        String sql = "UPDATE menu_table SET nama_menu=?, harga=?,jumlah=? WHERE id=?";
-//        try(PreparedStatement pst = Connections.getConnection().prepareStatement(sql))
-//        {   
-//            pst.setString(1, ad.getNama_menu());
-//            pst.setInt(2, ad.getHarga());
-//            pst.setInt(3, ad.getJumlah());
-//            pst.executeUpdate();
-//        }catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
+
         try{
             Connection con = Connections.getConnection();
             Statement st = con.createStatement();
@@ -211,25 +213,6 @@ public class admin_controll implements SimpanAdmin{
         }catch(SQLException ex){
             Logger.getLogger(AdminPage.class.getName()).log(Level.SEVERE,null,ex);
         }
-
-//        DefaultTableModel model = new DefaultTableModel();
-//        try{
-//            Connection con = Connections.getConnection();
-//            Statement st = con.createStatement();
-//            ResultSet rs = st.executeQuery("SELECT * from menu_table where nama_menu='"+model+"'");
-//            
-//            if(rs.next()){
-//                adm.getJTextNama().setText(rs.getString("nama_menu"));
-//                adm.getJTextHarga().setText(String.valueOf(rs.getInt("harga")));
-//                adm.getJTextJumlah().setText(String.valueOf(rs.getInt("jumlah")));
-//            }
-//        }
-//        catch(Exception ex){
-//            System.out.println(ex.getMessage());
-//        }
-//        adm.getJTextNama().setText(listadmin.get(row).getNama_menu());
-//        adm.getJTextHarga().setText(Integer.toString(listadmin.get(row).getHarga()));
-//        adm.getJTextJumlah().setText(Integer.toString(listadmin.get(row).getJumlah()));
     }
     
 
