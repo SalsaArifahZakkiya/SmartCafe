@@ -5,6 +5,7 @@
  */
 package controller;
 import View.MenuView;
+import View.OwnerView;
 import com.mysql.cj.protocol.Resultset;
 import com.sun.glass.ui.Cursor;
 import model.login;
@@ -27,6 +28,7 @@ public class login_controll {
     private LoginPage frame1;
     private AdminPage frame2;
     private MenuView frame3;
+    private OwnerView frame4;
 
 public login_controll(LoginPage login){
     frame1=login;
@@ -61,6 +63,12 @@ public login_controll(LoginPage login){
                    frame3 = new MenuView();
                    
                    frame3.setVisible(true);
+                   frame1.dispose();
+                }
+                if(role.equalsIgnoreCase("Owner")&&s1.equalsIgnoreCase("owner")){
+                   frame4 = new OwnerView();
+                   
+                   frame4.setVisible(true);
                    frame1.dispose();
                 }
             }else{

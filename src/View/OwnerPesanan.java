@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Views;
+package View;
 
-import Controller.Connections;
+import controller.Connections;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;

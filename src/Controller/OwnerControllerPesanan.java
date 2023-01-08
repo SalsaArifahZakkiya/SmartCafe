@@ -1,8 +1,8 @@
 package Controller;
 
-import Model.PesananModel;
-import Views.Pesanan;
-import Views.View;
+import Model.OwnerModelPesanan;
+import View.OwnerPesanan;
+import View.OwnerView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -16,9 +16,9 @@ import javax.swing.table.DefaultTableModel;
  * @author user
  */
 public class OwnerControllerPesanan {
-    Pesanan menuPesanan;
+    OwnerPesanan menuPesanan;
     
-    public OwnerControllerPesanan(Pesanan menu){
+    public OwnerControllerPesanan(OwnerPesanan menu){
         menuPesanan = menu;
         menuPesanan.btnBack(new back());
         menuPesanan.btnPrint(new print());
@@ -26,7 +26,7 @@ public class OwnerControllerPesanan {
     class back implements ActionListener{
         public void actionPerformed(ActionEvent ae) {
             try{
-                View view = new View();
+                OwnerView view = new OwnerView();
                 view.setVisible(true); 
             } catch (Exception e){
                 

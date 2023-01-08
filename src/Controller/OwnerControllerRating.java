@@ -1,8 +1,8 @@
 package Controller;
 
-import static Controller.Connections.con;
-import Views.Rating;
-import Views.View;
+import controller.Connections;
+import View.OwnerRating;
+import View.OwnerView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -15,9 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class OwnerControllerRating{ 
-    Rating menuRating;
+    OwnerRating menuRating;
 
-    public OwnerControllerRating(Rating menu){
+    public OwnerControllerRating(OwnerRating menu){
         menuRating = menu;
         menuRating.btnSearch(new btnSearch());
         menuRating.btnBack(new back());
@@ -27,7 +27,7 @@ public class OwnerControllerRating{
     class back implements ActionListener{
         public void actionPerformed(ActionEvent ae) {
             try{
-                View view = new View();
+                OwnerView view = new OwnerView();
                 view.setVisible(true); 
             } catch (Exception e){
                 
