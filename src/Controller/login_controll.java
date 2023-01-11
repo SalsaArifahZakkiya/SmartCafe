@@ -18,7 +18,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-
+import View.MenuMasukForm;
 import Controller.Connections;
 /**
  *
@@ -29,7 +29,7 @@ public class login_controll {
     private AdminPage frame2;
     private MenuView frame3;
     private OwnerView frame4;
-
+    private MenuMasukForm frame5;
 public login_controll(LoginPage login){
     frame1=login;
     frame1.kliklogin(new btnsimpan());
@@ -69,6 +69,12 @@ public login_controll(LoginPage login){
                    frame4 = new OwnerView();
                    
                    frame4.setVisible(true);
+                   frame1.dispose();
+                }
+                if(role.equalsIgnoreCase("Kasir")&&s1.equalsIgnoreCase("kasir")){
+                   frame5 = new MenuMasukForm();
+                   
+                   frame5.setVisible(true);
                    frame1.dispose();
                 }
             }else{
