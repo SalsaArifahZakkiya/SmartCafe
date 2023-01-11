@@ -496,6 +496,10 @@ public class MenuDetailForm extends javax.swing.JFrame {
     public void btnRemove (ActionListener ac) {
         btnRemove.addActionListener(ac);
     }
+    
+    public void btnPay (ActionListener ac) {
+        btnPay.addActionListener(ac);
+    }
      
     
     

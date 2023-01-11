@@ -12,6 +12,7 @@ import Model.login_model_controll;
 import View.LoginPage;
 import View.AdminPage;
 import View.Customer_Page;
+import View.Payment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -19,7 +20,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import View.MenuMasukForm;
+import View.MenuDetailForm;
+import Controller.Kasir_ctrl;
 import Controller.Connections;
+import View.Payment;
+import javax.swing.JTable;
 /**
  *
  * @author USER
@@ -30,6 +35,9 @@ public class login_controll {
     private MenuView frame3;
     private OwnerView frame4;
     private MenuMasukForm frame5;
+    private MenuDetailForm frame6;
+    private Payment bayar;
+    private Kasir_ctrl KasirCtrl;
 public login_controll(LoginPage login){
     frame1=login;
     frame1.kliklogin(new btnsimpan());
@@ -73,9 +81,12 @@ public login_controll(LoginPage login){
                 }
                 if(role.equalsIgnoreCase("Kasir")&&s1.equalsIgnoreCase("kasir")){
                    frame5 = new MenuMasukForm();
-                   
+                   bayar = new Payment();
+                   frame6 = new MenuDetailForm();
                    frame5.setVisible(true);
-                   frame1.dispose();
+                   KasirCtrl = new Kasir_ctrl(frame5, frame6, bayar);
+                   frame1.dispose();   
+                                    
                 }
             }else{
                 JOptionPane.showMessageDialog(frame1, "Username dan password tidak cocok", "Login Error", 1);

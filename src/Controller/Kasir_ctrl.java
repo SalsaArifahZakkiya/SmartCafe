@@ -7,6 +7,7 @@ package Controller;
 
 import View.MenuDetailForm;
 import View.MenuMasukForm;
+import View.Payment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTable;
@@ -20,10 +21,12 @@ import javax.swing.table.DefaultTableModel;
 public class Kasir_ctrl {
     private MenuMasukForm TampilanAwal;
     private MenuDetailForm TampilanDetail;
+    private Payment Pay;
     
-    public Kasir_ctrl(MenuMasukForm masuk,MenuDetailForm detail){
+    public Kasir_ctrl(MenuMasukForm masuk,MenuDetailForm detail, Payment bayar){
         TampilanAwal = masuk;
         TampilanDetail = detail;
+        Pay = bayar;
         TampilanAwal.btnLihat(new btnLihat());
         TampilanDetail.btnKentang(new btnKentang());
         TampilanDetail.btnRoti(new btnRoti());
@@ -49,6 +52,7 @@ public class Kasir_ctrl {
         //Button Lain
         TampilanDetail.btnReset(new btnReset());
         TampilanDetail.btnRemove(new btnRemove());
+        TampilanDetail.btnPay(new btnPay());
 
     }
     
@@ -343,6 +347,15 @@ public class Kasir_ctrl {
             }
         }
             
+        }
+        
+        class btnPay implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Pay.setVisible(true);
+
+            }
         }
 
          
