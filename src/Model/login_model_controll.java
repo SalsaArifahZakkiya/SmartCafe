@@ -1,18 +1,18 @@
 
-package model;
+package Model;
 
 
-public class login {
+public class login_model_controll {
     private String username;
     private String password;
     private String role;
 
-    public login() {
+    public login_model_controll() {
     }
     
     
 
-    public login(String username, String password, String role) {
+    public login_model_controll(String username, String password, String role) {
         this.username = username;
         this.password = password;
         this.role = role;

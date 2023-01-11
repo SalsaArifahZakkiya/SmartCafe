@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package View;
 
-import Controller.DBConnection;
+import Controller.Connections;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import model.Account_Payment;
+import Model.Account_Payment;
 
 /**
  *
@@ -44,7 +44,7 @@ public JTable getTabelPesanan() {
     
     public void tampil(){
         try{
-            Connection con = DBConnection.getConnection();
+            Connection con = Connections.getConnection();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT Item, Amount, Quantity FROM userdata");
             DefaultTableModel model = (DefaultTableModel)getTabelPesanan().getModel();

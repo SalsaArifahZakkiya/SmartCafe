@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package Controller;
 
 import java.awt.List;
 import java.awt.event.ActionEvent;
@@ -19,8 +19,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import view.AdminPage;
-import model.admin;
+import View.AdminPage;
+import Model.admin;
 /**
  *
  * @author USER

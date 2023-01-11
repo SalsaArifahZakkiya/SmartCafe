@@ -3,14 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Model;
+
+import Controller.login_controll;
 
 /**
  *
  * @author USER
  */
-public interface Simpan {
-    public void simpan(String u, String p, String r);
-    
+public class Login_Owner extends login_model_controll {
+    public Login_Owner(String username,String password, String role){
+    super (username,password,role);
+    }
     
 }

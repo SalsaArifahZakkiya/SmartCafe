@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package Controller;
 import View.MenuView;
 import View.OwnerView;
 import com.mysql.cj.protocol.Resultset;
 import com.sun.glass.ui.Cursor;
-import model.login;
-import view.LoginPage;
-import view.AdminPage;
-import view.Customer_Page;
+import Model.login_model_controll;
+import View.LoginPage;
+import View.AdminPage;
+import View.Customer_Page;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -19,7 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
-import controller.Connections;
+import Controller.Connections;
 /**
  *
  * @author USER

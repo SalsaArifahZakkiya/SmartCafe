@@ -5,12 +5,12 @@
  */
 package tubes;
 
-import model.login;
-import view.AdminPage;
-import view.Customer_Page;
-import view.LoginPage;
-import controller.login_controll;
-import controller.Connections;
+import Model.login_model_controll;
+import View.AdminPage;
+import View.Customer_Page;
+import View.LoginPage;
+import Controller.login_controll;
+import Controller.Connections;
 public class Tubes {
 
     /**

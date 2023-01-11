@@ -5,7 +5,7 @@
  */
 package View;
 
-import controller.Connections;
+import Controller.Connections;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Statement;

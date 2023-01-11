@@ -1,6 +1,6 @@
 package Controller;
 
-import controller.Connections;
+import Controller.Connections;
 import View.OwnerRating;
 import View.OwnerView;
 import java.awt.event.ActionEvent;

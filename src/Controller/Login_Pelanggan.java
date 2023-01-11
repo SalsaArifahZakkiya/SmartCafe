@@ -9,6 +9,6 @@ package Controller;
  *
  * @author USER
  */
-public interface SimpanAdmin {
-    public void simpanAdm (String n , int h, int j);
+public class Login_Pelanggan {
+    
 }

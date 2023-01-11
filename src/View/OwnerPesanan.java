@@ -5,7 +5,7 @@
  */
 package View;
 
-import controller.Connections;
+import Controller.Connections;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;

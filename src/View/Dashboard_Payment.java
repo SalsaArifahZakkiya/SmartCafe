@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package View;
 
-import model.Account_Payment;
+import Model.Account_Payment;
 
 /**
  *

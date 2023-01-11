@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package View;
 
-import controller.Connections;
+import Controller.Connections;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import controller.admin_controll;
+import Controller.admin_controll;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
