@@ -21,6 +21,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import View.MenuMasukForm;
 import View.MenuDetailForm;
+import View.Preview;
 import Controller.Kasir_ctrl;
 import Controller.Connections;
 import View.Payment;
@@ -37,6 +38,7 @@ public class login_controll {
     private MenuMasukForm frame5;
     private MenuDetailForm frame6;
     private Payment bayar;
+    private Preview struk;
     private Kasir_ctrl KasirCtrl;
 public login_controll(LoginPage login){
     frame1=login;
@@ -69,7 +71,9 @@ public login_controll(LoginPage login){
                 }
                 if(role.equalsIgnoreCase("Customer")&&s1.equalsIgnoreCase("customer")){
                    frame3 = new MenuView();
-                   
+                   MenuController mn = new MenuController(frame3);
+                   MakananController mc = new MakananController(frame3, mn);
+                   MinumanController mi = new MinumanController(frame3, mn);
                    frame3.setVisible(true);
                    frame1.dispose();
                 }
@@ -83,8 +87,9 @@ public login_controll(LoginPage login){
                    frame5 = new MenuMasukForm();
                    bayar = new Payment();
                    frame6 = new MenuDetailForm();
+                   struk = new Preview();
                    frame5.setVisible(true);
-                   KasirCtrl = new Kasir_ctrl(frame5, frame6, bayar);
+                   KasirCtrl = new Kasir_ctrl(frame5, frame6, bayar, struk);
                    frame1.dispose();   
                                     
                 }

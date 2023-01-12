@@ -19,6 +19,8 @@ import javax.swing.JTable;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import Model.Account_Payment;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
 /**
  *
@@ -38,41 +40,45 @@ public class Payment extends javax.swing.JFrame {
     public Payment() {
         initComponents();
     }
-public JTable getTabelPesanan() {
-        return tabelPesanan;
-    }
-    
-    public void tampil(){
-        try{
-            Connection con = Connections.getConnection();
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT Item, Amount, Quantity FROM userdata");
-            DefaultTableModel model = (DefaultTableModel)getTabelPesanan().getModel();
-
-            while(rs.next()){
-                Object o[] = {rs.getString("namamenu"), rs.getFloat("rating"), rs.getString("komentar")};
-                model.addRow(o);   
-            }
-            rs.close();
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(this, ex.getMessage());
+    public JTable getTabelPesanan() {
+            return tabelPesanan;
         }
+    
+    public void btnSubumit(ActionListener ac) {
+        submitButton.addActionListener(ac);
     }
+    
+//    public void tampil(){
+//        try{
+//            Connection con = Connections.getConnection();
+//            Statement st = con.createStatement();
+//            ResultSet rs = st.executeQuery("SELECT Item, Amount, Quantity FROM userdata");
+//            DefaultTableModel model = (DefaultTableModel)getTabelPesanan().getModel();
+//
+//            while(rs.next()){
+//                Object o[] = {rs.getString("namamenu"), rs.getFloat("rating"), rs.getString("komentar")};
+//                model.addRow(o);   
+//            }
+//            rs.close();
+//        }catch(Exception ex){
+//            JOptionPane.showMessageDialog(this, ex.getMessage());
+//        }
+//    }
 
     
-    Payment(Account_Payment user, String accType) {
-        this.user = user;
-        this.accType = accType;
-        initComponents();
-        
-        ratingSlider.setValue(0);
-        ratingSlider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                ratingLabel.setText(String.valueOf(ratingSlider.getValue()));
-            }
-        });
-    }
+//    Payment(Account_Payment user, String accType) {
+//        this.user = user;
+//        this.accType = accType;
+//        initComponents();
+//        
+//        ratingSlider.setValue(0);
+//        ratingSlider.addChangeListener(new ChangeListener() {
+//            @Override
+//            public void stateChanged(ChangeEvent e) {
+//                ratingLabel.setText(String.valueOf(ratingSlider.getValue()));
+//            }
+//        });
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -86,18 +92,18 @@ public JTable getTabelPesanan() {
         jLabel2 = new javax.swing.JLabel();
         submitButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        backButton = new javax.swing.JButton();
         uploadButton = new javax.swing.JButton();
         filenameLabel = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        ratingSlider = new javax.swing.JSlider();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        ratingLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelPesanan = new javax.swing.JTable();
         textField1 = new java.awt.TextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,12 +113,12 @@ public JTable getTabelPesanan() {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel2.setText("Pilih service yang ingin dibayar :");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        jLabel2.setText("Metode Pembayaran :");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
         submitButton.setBackground(new java.awt.Color(0, 165, 171));
         submitButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        submitButton.setText("Submit bukti pembayaran");
+        submitButton.setText("SUBMIT");
         submitButton.setBorder(null);
         submitButton.setMaximumSize(new java.awt.Dimension(153, 34));
         submitButton.setMinimumSize(new java.awt.Dimension(153, 34));
@@ -122,27 +128,12 @@ public JTable getTabelPesanan() {
                 submitButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, 400, 36));
+        jPanel1.add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 660, 390, 36));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(68, 68, 68));
         jLabel7.setText("Pembayaran");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 32, 166, -1));
-
-        backButton.setBackground(new java.awt.Color(255, 255, 255));
-        backButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        backButton.setForeground(new java.awt.Color(0, 165, 171));
-        backButton.setText("Kembali");
-        backButton.setBorder(null);
-        backButton.setBorderPainted(false);
-        backButton.setFocusPainted(false);
-        backButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 102, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 150, -1));
 
         uploadButton.setBackground(new java.awt.Color(255, 255, 255));
         uploadButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -157,54 +148,35 @@ public JTable getTabelPesanan() {
                 uploadButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(uploadButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 401, 36));
+        jPanel1.add(uploadButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 401, 36));
 
         filenameLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         filenameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         filenameLabel.setText("belum ada file yang ter-upload");
         filenameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(filenameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 401, -1));
+        jPanel1.add(filenameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 401, -1));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(68, 68, 68));
         jLabel9.setText("Upload file");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 158, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 80, -1));
 
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(68, 68, 68));
-        jLabel14.setText("Beri rating");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 158, -1));
-
-        ratingSlider.setBackground(new java.awt.Color(255, 255, 255));
-        ratingSlider.setForeground(new java.awt.Color(65, 65, 65));
-        ratingSlider.setMaximum(5);
-        ratingSlider.setMinimum(1);
-        ratingSlider.setSnapToTicks(true);
-        ratingSlider.setToolTipText("");
-        jPanel1.add(ratingSlider, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 401, -1));
-
-        jLabel1.setText("1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, -1, -1));
-
-        jLabel3.setText("5");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, -1, -1));
-
-        ratingLabel.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        ratingLabel.setForeground(new java.awt.Color(0, 165, 171));
-        ratingLabel.setText("1");
-        jPanel1.add(ratingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, -1, -1));
+        jLabel14.setText("Beri Feedback");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, 110, -1));
 
         tabelPesanan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null}
+
             },
             new String [] {
-                "Item", "Quantity", "Amount"
+                "Nama Pemesan", "Nomor Meja", "Total"
             }
         ));
         jScrollPane1.setViewportView(tabelPesanan);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, 100));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, 90));
 
         textField1.setBackground(new java.awt.Color(0, 0, 0));
         textField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -217,20 +189,37 @@ public JTable getTabelPesanan() {
                 textField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 400, -1));
+        jPanel1.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 400, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cash", "Cashless" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Very Good!", "Good!", "Not Bad", "Bad" }));
+        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(68, 68, 68));
+        jLabel15.setText("Beri Penilaian Kamu");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 140, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 530, 390, 120));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -238,6 +227,10 @@ public JTable getTabelPesanan() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+        public DefaultTableModel getModelTable(){
+        return (DefaultTableModel) tabelPesanan.getModel();
+    }
+    
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
 
@@ -247,7 +240,7 @@ public JTable getTabelPesanan() {
 
             //con = DBConnection.getConnection();
             pst = con.prepareStatement("update service set Status = 'Selesai', rating =? where id =?");
-            pst.setInt(1, ratingSlider.getValue());
+            //pst.setInt(1, ratingSlider.getValue());
             pst.setString(2, value);
             pst.executeUpdate();
             dispose();
@@ -259,13 +252,6 @@ public JTable getTabelPesanan() {
 //            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_submitButtonActionPerformed
-
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-        Dashboard_Payment obj = new Dashboard_Payment(user, accType);
-        dispose();
-        obj.setVisible(true);
-    }//GEN-LAST:event_backButtonActionPerformed
 
     private void uploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadButtonActionPerformed
         // TODO add your handling code here:
@@ -327,18 +313,18 @@ public JTable getTabelPesanan() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backButton;
     private javax.swing.JLabel filenameLabel;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel ratingLabel;
-    private javax.swing.JSlider ratingSlider;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton submitButton;
     private javax.swing.JTable tabelPesanan;
     private java.awt.TextField textField1;

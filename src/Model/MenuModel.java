@@ -1,6 +1,8 @@
 
 package Model;
 
+import java.util.ArrayList;
+
 
 public abstract class MenuModel implements Inputable{
     private String nama;
@@ -8,9 +10,11 @@ public abstract class MenuModel implements Inputable{
     private int qty;
     private static int favorite;
     private static int JumlahTejual;
-    private String[] ArrayFeedback;
+    //private ArrayList<Pesanan.Pembayaran> Feedback;
     
-    public MenuModel() {}
+//    public MenuModel() {
+//        this.Feedback = new ArrayList<Pesanan.Pembayaran>();
+//    }
 
     public MenuModel(String nama, double harga, int qty) {
         this.nama = nama;
@@ -26,10 +30,6 @@ public abstract class MenuModel implements Inputable{
         return JumlahTejual;
     }
 
-    public String[] getArrayFeedback() {
-        return ArrayFeedback;
-    }
-
     public int getQty() {
         return qty;
     }
@@ -40,10 +40,6 @@ public abstract class MenuModel implements Inputable{
 
     public static void setJumlahTejual(int JumlahTejual) {
         MenuModel.JumlahTejual = JumlahTejual;
-    }
-
-    public void setArrayFeedback(String[] ArrayFeedback) {
-        this.ArrayFeedback = ArrayFeedback;
     }
 
     public void setQty(int qty) {
@@ -67,22 +63,9 @@ public abstract class MenuModel implements Inputable{
         this.harga = harga;
     }
     
-    public static double getPrice(double harga, int qty){
-        return harga * qty;
+    public double getPrice(){
+        return this.harga * this.qty;
     }
-    
-   /*  
-    public void MenuFavorite(){
-        MenuModel.favorite++;
-    }
-    public void JumlahTerjual(){
-        MenuModel.JumlahTejual++;
-    }
-   
-    public void LihatFeedback(){
-        
-    }
-*/
 
     
 }

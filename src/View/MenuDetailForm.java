@@ -73,7 +73,7 @@ public class MenuDetailForm extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         btnRemove = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
-        btnProses = new javax.swing.JButton();
+        btnPreview = new javax.swing.JButton();
         btnPay = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -283,8 +283,8 @@ public class MenuDetailForm extends javax.swing.JFrame {
         btnReset.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         btnReset.setText("RESET");
 
-        btnProses.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
-        btnProses.setText("PROSESS");
+        btnPreview.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
+        btnPreview.setText("PREVIEW");
 
         btnPay.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         btnPay.setText("PAY");
@@ -296,13 +296,15 @@ public class MenuDetailForm extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnProses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPreview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(53, 53, 53)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnPay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnReset, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btnPay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,10 +314,10 @@ public class MenuDetailForm extends javax.swing.JFrame {
                     .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnProses, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
@@ -341,11 +343,11 @@ public class MenuDetailForm extends javax.swing.JFrame {
                                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)))
+                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -365,7 +367,6 @@ public class MenuDetailForm extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -375,7 +376,8 @@ public class MenuDetailForm extends javax.swing.JFrame {
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(pnl_Total, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -383,8 +385,16 @@ public class MenuDetailForm extends javax.swing.JFrame {
 
     //=========================== function ITEM COST =======================================
     
+    public DefaultTableModel getModelTable(){
+        return (DefaultTableModel) tbl_pesanan.getModel();
+    }
+    
     public  JTable getTablePesanan(){
         return tbl_pesanan;
+    }
+    
+    public void setTableDetail(DefaultTableModel model){
+        tbl_pesanan.setModel(model);
     }
     
     public void tambahBaris(Object[] o){
@@ -393,6 +403,18 @@ public class MenuDetailForm extends javax.swing.JFrame {
     
     public JTextField getTxtSubtotal() {
         return txt_subtotal;
+    }
+    
+    public void setTextSubtotal(double subtotal){
+        txt_subtotal.setText(String.valueOf(subtotal));
+    }
+    
+    public void setTextTax(double tax){
+        txt_tax.setText(String.valueOf(tax));
+    }
+    
+    public void setTextTotal(double total){
+        txt_total.setText(String.valueOf(total));
     }
     
     public JTextField getTxtTax() {
@@ -500,6 +522,10 @@ public class MenuDetailForm extends javax.swing.JFrame {
     public void btnPay (ActionListener ac) {
         btnPay.addActionListener(ac);
     }
+    
+    public void btnPreview (ActionListener ac) {
+        btnPreview.addActionListener(ac);
+    }
      
     
     
@@ -556,7 +582,7 @@ public class MenuDetailForm extends javax.swing.JFrame {
     private javax.swing.JButton btnNasiGoreng;
     private javax.swing.JButton btnOnionRing;
     private javax.swing.JButton btnPay;
-    private javax.swing.JButton btnProses;
+    private javax.swing.JButton btnPreview;
     private javax.swing.JButton btnRedVelvetLatte;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnReset;

@@ -48,12 +48,20 @@ public class MenuMasukForm extends javax.swing.JFrame {
 
         tbl_pesananMasuk.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "ID Pesanan", "Nama Pemesan", "Nomor Meja", "Tanggal Pesanan", "Status Pesanan"
+                "ID Pesanan", "Nama Pemesan", "Nomor Meja", "Total"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tbl_pesananMasuk);
 
         btnToMenuDetail.setText("Lihat Pesanan");
@@ -104,8 +112,17 @@ public class MenuMasukForm extends javax.swing.JFrame {
         return tbl_pesananMasuk;
     }
     
+    public void setTable(DefaultTableModel model) {
+        tbl_pesananMasuk.setModel(model);
+    }
+    
     public void btnLihat(ActionListener ac){
         btnToMenuDetail.addActionListener(ac);
+    }
+    
+    public String getSelectedId(){
+        int row = tbl_pesananMasuk.getSelectedRow();
+        return tbl_pesananMasuk.getModel().getValueAt(row, 0).toString();
     }
     /**
      * @param args the command line arguments

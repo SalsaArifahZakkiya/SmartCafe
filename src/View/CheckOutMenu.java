@@ -1,3 +1,4 @@
+//from salsa
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,7 +6,10 @@
  */
 package View;
 
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -19,6 +23,22 @@ public class CheckOutMenu extends javax.swing.JDialog {
     public CheckOutMenu(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+
+    public JRadioButton getjRadioButtonDineIn() {
+        return jRadioButtonDineIn;
+    }
+
+    public JRadioButton getjRadioButtonTakeAway() {
+        return jRadioButtonTakeAway;
+    }
+
+    public JTextField getjTextFieldCttn() {
+        return jTextFieldCttn;
+    }
+
+    public JTextField getjTextFieldNama() {
+        return jTextFieldNama;
     }
     
     public String getNama(){
@@ -103,11 +123,6 @@ public class CheckOutMenu extends javax.swing.JDialog {
         jTextFieldCttn.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         jButton1.setText("Submit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Meja 1", "Meja 2", "Meja 3", "Meja 4" }));
 
@@ -121,10 +136,16 @@ public class CheckOutMenu extends javax.swing.JDialog {
         bindingGroup.addBinding(binding);
 
         buttonGroup1.add(jRadioButtonTakeAway);
-        jRadioButtonTakeAway.setText("Makan di tempat (Take away)");
+        jRadioButtonTakeAway.setText("Makan di luar (Take away)");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jRadioButtonTakeAway, org.jdesktop.beansbinding.ELProperty.create("${actionCommand}"), jRadioButtonTakeAway, org.jdesktop.beansbinding.BeanProperty.create("actionCommand"));
         bindingGroup.addBinding(binding);
+
+        jRadioButtonTakeAway.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonTakeAwayActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setText("Data Pemesanan ");
@@ -156,7 +177,7 @@ public class CheckOutMenu extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(11, 11, 11)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,61 +244,13 @@ public class CheckOutMenu extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (jTextFieldNama.getText().equals("") && jTextFieldCttn.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Anda belum mengisi data dengan benar, Mohon Masukkan data dengan benar!");
-        } else {
-            //button ini di gunakan untuk mengirimkan ke database (menggunakan controller)
-            int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to checkout?", "Confirm Checkout", JOptionPane.YES_NO_OPTION);
-            if (result == JOptionPane.YES_OPTION) {
-                // Process payment and close dialog
-                setVisible(false);
-            }
-            
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jRadioButtonTakeAwayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonTakeAwayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonTakeAwayActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(CheckOutMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(CheckOutMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(CheckOutMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(CheckOutMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the dialog */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                CheckOutMenu dialog = new CheckOutMenu(new javax.swing.JFrame(), true);
-//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-//                    @Override
-//                    public void windowClosing(java.awt.event.WindowEvent e) {
-//                        System.exit(0);
-//                    }
-//                });
-//                dialog.setVisible(true);
-//            }
-//        });
-//    }
+    public void buttonSubmit(ActionListener ac){
+        jButton1.addActionListener(ac);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

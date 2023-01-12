@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2023 at 06:36 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Waktu pembuatan: 12 Jan 2023 pada 17.08
+-- Versi server: 10.4.25-MariaDB
+-- Versi PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_table`
+-- Struktur dari tabel `detail_table`
 --
 
 CREATE TABLE `detail_table` (
@@ -38,7 +38,27 @@ CREATE TABLE `detail_table` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login_table`
+-- Struktur dari tabel `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `ID_Feedback` int(11) NOT NULL,
+  `Nama_Pemesan` varchar(255) NOT NULL,
+  `Ulasan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `feedback`
+--
+
+INSERT INTO `feedback` (`ID_Feedback`, `Nama_Pemesan`, `Ulasan`) VALUES
+(1, 'Salsa', 'Makanannya enak!'),
+(2, 'Koko', 'Cafenya bagus!');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `login_table`
 --
 
 CREATE TABLE `login_table` (
@@ -50,7 +70,7 @@ CREATE TABLE `login_table` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `login_table`
+-- Dumping data untuk tabel `login_table`
 --
 
 INSERT INTO `login_table` (`id`, `nama`, `username`, `password`, `role`) VALUES
@@ -62,7 +82,7 @@ INSERT INTO `login_table` (`id`, `nama`, `username`, `password`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu_table`
+-- Struktur dari tabel `menu_table`
 --
 
 CREATE TABLE `menu_table` (
@@ -73,7 +93,7 @@ CREATE TABLE `menu_table` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `menu_table`
+-- Dumping data untuk tabel `menu_table`
 --
 
 INSERT INTO `menu_table` (`id`, `nama_menu`, `harga`, `jumlah`) VALUES
@@ -100,44 +120,83 @@ INSERT INTO `menu_table` (`id`, `nama_menu`, `harga`, `jumlah`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pesanan`
+-- Struktur dari tabel `pesanan`
 --
 
 CREATE TABLE `pesanan` (
-  `code` int(200) NOT NULL,
-  `namamenu` varchar(255) NOT NULL,
-  `quantity` int(11) NOT NULL
+  `Id_detail` int(11) NOT NULL,
+  `ID_Pesanan` int(255) NOT NULL,
+  `Nama_menu` varchar(255) NOT NULL,
+  `Qty` int(11) NOT NULL,
+  `Harga` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pesanan`
+-- Dumping data untuk tabel `pesanan`
 --
 
-INSERT INTO `pesanan` (`code`, `namamenu`, `quantity`) VALUES
-(2, 'Roti bakar', 2),
-(3, 'Kentang goreng', 7),
-(4, 'Dimsum', 11),
-(5, 'Waffle', 8);
+INSERT INTO `pesanan` (`Id_detail`, `ID_Pesanan`, `Nama_menu`, `Qty`, `Harga`) VALUES
+(2, 1111, 'Roti bakar', 1, 18000),
+(3, 1111, 'Kentang goreng', 1, 18000),
+(4, 1111, 'Dimsum', 1, 20000),
+(5, 1111, 'Waffle', 2, 20000),
+(95, 1111, 'Roti bakar', 1, 18000),
+(96, 1111, 'Kentang goreng', 1, 18000),
+(97, 1111, 'Dimsum', 1, 20000),
+(98, 1111, 'Waffle', 2, 20000),
+(99, 1111, 'Nasi Goreng', 1, 18000),
+(100, 1111, 'Roti bakar', 1, 18000),
+(101, 1111, 'Kentang goreng', 1, 18000),
+(102, 1111, 'Dimsum', 1, 20000),
+(103, 1111, 'Waffle', 2, 20000),
+(104, 1111, 'Roti bakar', 1, 18000),
+(105, 1111, 'Kentang goreng', 1, 18000),
+(106, 1111, 'Dimsum', 1, 20000),
+(107, 1111, 'Waffle', 2, 20000),
+(108, 1111, 'Nasi Goreng', 1, 18000),
+(109, 1111, 'Nasi Goreng', 1, 18000),
+(110, 1111, 'Roti bakar', 1, 18000),
+(111, 1111, 'Kentang goreng', 1, 18000),
+(112, 1111, 'Dimsum', 1, 20000),
+(113, 1111, 'Waffle', 2, 20000),
+(114, 1111, 'Roti bakar', 1, 18000),
+(115, 1111, 'Kentang goreng', 1, 18000),
+(116, 1111, 'Dimsum', 1, 20000),
+(117, 1111, 'Waffle', 2, 20000),
+(118, 1111, 'Nasi Goreng', 1, 18000),
+(119, 1112, 'Kentang Goreng', 1, 18000),
+(120, 1112, 'Roti Bakar       ', 1, 20000),
+(121, 1112, 'Indomie Goreng', 1, 15000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pesanan_table`
+-- Struktur dari tabel `pesanan_table`
 --
 
 CREATE TABLE `pesanan_table` (
-  `id` int(255) NOT NULL,
-  `nama_pesanan` varchar(255) NOT NULL,
-  `nomeja` int(255) NOT NULL,
-  `catatanpesanan` varchar(255) NOT NULL,
-  `status` tinyint(1) NOT NULL,
-  `jenispesanan` varchar(255) NOT NULL
+  `ID_Pesanan` int(255) NOT NULL,
+  `Nama_Pemesan` varchar(255) NOT NULL,
+  `Nomor_Meja` varchar(255) NOT NULL,
+  `Catatan` varchar(255) NOT NULL,
+  `Jenis_Pesanan` varchar(255) NOT NULL,
+  `Sub_Total` double NOT NULL,
+  `Tax` double NOT NULL,
+  `Total` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `pesanan_table`
+--
+
+INSERT INTO `pesanan_table` (`ID_Pesanan`, `Nama_Pemesan`, `Nomor_Meja`, `Catatan`, `Jenis_Pesanan`, `Sub_Total`, `Tax`, `Total`) VALUES
+(1111, 'Belinda', '10', '-', 'Dine In', 114000, 4560, 118560),
+(1112, 'Belin', 'Meja 2', 'nananna', 'Makan di tempat (Dine in)', 54000, 2160, 56160);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `searchrating`
+-- Struktur dari tabel `searchrating`
 --
 
 CREATE TABLE `searchrating` (
@@ -148,7 +207,7 @@ CREATE TABLE `searchrating` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `searchrating`
+-- Dumping data untuk tabel `searchrating`
 --
 
 INSERT INTO `searchrating` (`code`, `namamenu`, `rating`, `komentar`) VALUES
@@ -164,82 +223,105 @@ INSERT INTO `searchrating` (`code`, `namamenu`, `rating`, `komentar`) VALUES
 --
 
 --
--- Indexes for table `detail_table`
+-- Indeks untuk tabel `detail_table`
 --
 ALTER TABLE `detail_table`
   ADD PRIMARY KEY (`ID_pesanan`),
   ADD KEY `ID_Menu` (`ID_Menu`);
 
 --
--- Indexes for table `login_table`
+-- Indeks untuk tabel `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`ID_Feedback`);
+
+--
+-- Indeks untuk tabel `login_table`
 --
 ALTER TABLE `login_table`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indexes for table `menu_table`
+-- Indeks untuk tabel `menu_table`
 --
 ALTER TABLE `menu_table`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pesanan`
+-- Indeks untuk tabel `pesanan`
 --
 ALTER TABLE `pesanan`
-  ADD PRIMARY KEY (`code`);
+  ADD PRIMARY KEY (`Id_detail`),
+  ADD KEY `ID_Pesanan` (`ID_Pesanan`);
 
 --
--- Indexes for table `pesanan_table`
+-- Indeks untuk tabel `pesanan_table`
 --
 ALTER TABLE `pesanan_table`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`ID_Pesanan`);
 
 --
--- Indexes for table `searchrating`
+-- Indeks untuk tabel `searchrating`
 --
 ALTER TABLE `searchrating`
   ADD PRIMARY KEY (`code`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `detail_table`
+-- AUTO_INCREMENT untuk tabel `detail_table`
 --
 ALTER TABLE `detail_table`
   MODIFY `ID_pesanan` int(255) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `login_table`
+-- AUTO_INCREMENT untuk tabel `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `ID_Feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `login_table`
 --
 ALTER TABLE `login_table`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `menu_table`
+-- AUTO_INCREMENT untuk tabel `menu_table`
 --
 ALTER TABLE `menu_table`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT for table `pesanan`
+-- AUTO_INCREMENT untuk tabel `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `code` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
--- AUTO_INCREMENT for table `pesanan_table`
+-- AUTO_INCREMENT untuk tabel `pesanan_table`
 --
 ALTER TABLE `pesanan_table`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Pesanan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1113;
 
 --
--- AUTO_INCREMENT for table `searchrating`
+-- AUTO_INCREMENT untuk tabel `searchrating`
 --
 ALTER TABLE `searchrating`
   MODIFY `code` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `pesanan`
+--
+ALTER TABLE `pesanan`
+  ADD CONSTRAINT `pesanan_ibfk_1` FOREIGN KEY (`ID_Pesanan`) REFERENCES `pesanan_table` (`ID_Pesanan`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

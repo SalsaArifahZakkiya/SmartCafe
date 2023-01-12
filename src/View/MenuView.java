@@ -1,10 +1,14 @@
-
+//from Salsa
 package View;
 
-import Controller.MenuController;
-import Model.Makanan;
+import Controller.Connections;
 import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.awt.print.PrinterException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -15,48 +19,79 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class MenuView extends javax.swing.JFrame {
     private int idpesanan = 1;
-    private int Total = 0;
+    private double subTotal = 0;
+    private double Total = 0;
+    private double tax = 0;
     private int x = 0;
-    private int TotalItem = 0;
-    private static int Terjual1 = 18;
-    private static int Terjual2 ;
-    private static int Terjual3 ;
-    private static int Terjual4 ;
-    private static int Terjual5 ;
-    private static int Terjual6 ;
-    private static int Terjual7 ;
-    private static int Terjual8 ;
-    private static int Terjual9 ;
-    private static int Terjual10 ;
-    private static int Terjual11 ;
-    private static int Terjual12 ;
-    private static int Terjual13 ;
-    private static int Terjual14 ;
-    private static int Terjual15 ;
-    private static int Terjual16 ;
-    private static int Terjual17 ;
-    private static int Terjual18 ;
-    private static int Terjual19 ;
-    private static int Terjual20 ;
+    
+    public Connection con;
+    public Statement st;
+    public ResultSet rs;
+    public DefaultTableModel modeltbl;
+    
+    
+    
+    //private int TotalItem = 0;
+//    private static int Terjual1 = 18;
+//    private static int Terjual2 ;
+//    private static int Terjual3 ;
+//    private static int Terjual4 ;
+//    private static int Terjual5 ;
+//    private static int Terjual6 ;
+//    private static int Terjual7 ;
+//    private static int Terjual8 ;
+//    private static int Terjual9 ;
+//    private static int Terjual10 ;
+//    private static int Terjual11 ;
+//    private static int Terjual12 ;
+//    private static int Terjual13 ;
+//    private static int Terjual14 ;
+//    private static int Terjual15 ;
+//    private static int Terjual16 ;
+//    private static int Terjual17 ;
+//    private static int Terjual18 ;
+//    private static int Terjual19 ;
+//    private static int Terjual20 ;
     
     
     public MenuView() {
         initComponents();
         init();
+        String[] header = {"ID_Feedback", "Nama_Pemesan", "Ulasan"};
+        modeltbl = new DefaultTableModel(header,0);
+        jTableFeedback.setModel(modeltbl);
+        tampil();
     }
-    
-    
-    
-    
+
     public void init(){
         setImageMakanan();
         setImageMinuman();
         setTime();
+    }
+    
+    public void tampil(){
+        Connections db = new Connections();
+        try{
+            con = db.getConnection();
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * FROM Feedback");
+            
+            while (rs.next()){
+                Object[] row = {rs.getInt(1), rs.getString(2), rs.getString(3)};
+                modeltbl.addRow(row);
+            }
+            jTableFeedback.setModel(modeltbl);
+            
+        }catch (SQLException ex){
+            System.out.println(ex.getMessage());
+        }
     }
     
     //getter
@@ -73,8 +108,12 @@ public class MenuView extends javax.swing.JFrame {
         this.Total = Total;
     }
 
-    public void setTotalItem(int TotalItem) {
-        this.TotalItem = TotalItem;
+    public void setSubTotal(double subTotal) {
+        this.subTotal = subTotal;
+    }
+
+    public void setTax(double tax) {
+        this.tax = tax;
     }
 
     public void setjTextAreaHasil(JTextArea jTextAreaHasil) {
@@ -88,10 +127,27 @@ public class MenuView extends javax.swing.JFrame {
     public void setHasil(String text){
         this.jTextAreaHasil.setText(text);
     }
+    
     public JButton getBtnOrder() {
         return btnOrder;
     }
+    
+    public JButton getBtnReset() {
+        return btnReset;
+    }
 
+    public JTable getjTableFeedback() {
+        return jTableFeedback;
+    }
+
+    public void setjTableFeedback(JTable jTableFeedback) {
+        this.jTableFeedback = jTableFeedback;
+    }
+    
+    public JLabel getjLabelChocolatte() {
+        return jLabelChocolatte;
+    }
+    
     public JLabel getjLabelkentang() {
         return jLabelkentang;
     }
@@ -168,10 +224,6 @@ public class MenuView extends javax.swing.JFrame {
         return jLabelindomie;
     }
     
-    public JButton getBtnReset() {
-        return btnReset;
-    }
-
     public JCheckBox getjCheckBoxKentang() {
         return jCheckBoxKentang;
     }
@@ -336,13 +388,19 @@ public class MenuView extends javax.swing.JFrame {
         return jTextAreaHasil;
     }
 
+    public JTextField getjTextFieldSubtotal() {
+        return jTextFieldSubtotal;
+    }
+
+    public JTextField getjTextFieldtax() {
+        return jTextFieldtax;
+    }
+
+    
     public JTextField getjTextFieldTotal() {
         return jTextFieldTotal;
     }
 
-    public JTextField getjTextFieldTotalItem() {
-        return jTextFieldTotalItem;
-    }
     
     //Makanan
     public void setCeklisKentang(ActionListener ac){
@@ -406,9 +464,18 @@ public class MenuView extends javax.swing.JFrame {
     public void setCeklisVanilaLatte(ActionListener ac){
         jCheckBoxvanilalatte.addActionListener(ac);
     }
+    
+    
+    
+    //button reset
     public void setBtnReset(ActionListener ac){
         btnReset.addActionListener(ac);
     }
+    //button order
+    public void setBtnOrder(ActionListener ac){
+        btnOrder.addActionListener(ac);
+    }
+    
     
     
     public void setImageMakanan(){
@@ -513,66 +580,58 @@ public class MenuView extends javax.swing.JFrame {
         Image img10 = icon10.getImage().getScaledInstance(jLabelimageChoco.getWidth(), jLabelimageChoco.getHeight(), Image.SCALE_SMOOTH);
         jLabelimageChoco.setIcon(new ImageIcon(img10));
     }
-    public void reset(){
-        Total = 0;
-        x = 0;
-        TotalItem = 0;
-        btnOrder.setEnabled(true);
-        jSpinnerKentang.setValue(0);
-        jSpinneramericano.setValue(0);
-        jSpinnercoffelatte.setValue(0);
-        jSpinnerRotiBakar.setValue(0);
-        jSpinnerindomie.setValue(0);
-        jSpinnerdimsum.setValue(0);
-        jSpinnerwaffle.setValue(0);
-        jSpinnerburger.setValue(0);
-        jSpinnerspagetti.setValue(0);
-        jSpinneronion.setValue(0);
-        jSpinnersosis.setValue(0);
-        jSpinnernnasgor.setValue(0);
-        jSpinnericetea.setValue(0);
-        jSpinnerlycheetea.setValue(0);
-        jSpinnerlemontea.setValue(0);
-        jSpinnermatchalatte.setValue(0);
-        jSpinnerredvelvet.setValue(0);
-        jSpinnertarolatte.setValue(0);
-        jSpinnervanilalatte.setValue(0);
-        jSpinnerchocolatte.setValue(0);
-        jTextFieldTotalItem.setText("0");
-        jTextFieldTotal.setText("0");
-        jTextAreaHasil.setText(".");
-        jCheckBoxKentang.setSelected(false);
-        jCheckBoxamericano.setSelected(false);
-        jCheckBoxcoffelatte.setSelected(false);
-        jCheckBoxRotibakar.setSelected(false);
-        jCheckBoxindomie.setSelected(false);
-        jCheckBoxdimsum.setSelected(false);
-        jCheckBoxwaffle.setSelected(false);
-        jCheckBoxburger.setSelected(false);
-        jCheckBoxspageti.setSelected(false);
-        jCheckBoxonion.setSelected(false);
-        jCheckBoxsosis.setSelected(false);
-        jCheckBoxnasgor.setSelected(false);
-        jCheckBoxicetea.setSelected(false);
-        jCheckBoxlycheetea.setSelected(false);
-        jCheckBoxlemontea.setSelected(false);
-        jCheckBoxmatchalatte.setSelected(false);
-        jCheckBoxredvelvet.setSelected(false);
-        jCheckBoxtarolatte.setSelected(false);
-        jCheckBoxvanilalatte.setSelected(false);
-        jCheckBoxchocolatte.setSelected(false);
-        jTerjual1.setText(Integer.toString(0));
-        
-    }
-    
-    //mengecek apakah qty kosong atau tidak
-    public boolean qtyIsZero(int qty){
-        if(qty == 0){
-            JOptionPane.showMessageDialog(null, "Item Tidak Boleh Kosong, Mohon Masukkan Item Lagi!");
-            return false;
-        }
-        return true;
-    }
+//    public void reset(){
+//        Total = 0;
+//        x = 0;
+//        //TotalItem = 0;
+//        btnOrder.setEnabled(true);
+//        jSpinnerKentang.setValue(0);
+//        jSpinneramericano.setValue(0);
+//        jSpinnercoffelatte.setValue(0);
+//        jSpinnerRotiBakar.setValue(0);
+//        jSpinnerindomie.setValue(0);
+//        jSpinnerdimsum.setValue(0);
+//        jSpinnerwaffle.setValue(0);
+//        jSpinnerburger.setValue(0);
+//        jSpinnerspagetti.setValue(0);
+//        jSpinneronion.setValue(0);
+//        jSpinnersosis.setValue(0);
+//        jSpinnernnasgor.setValue(0);
+//        jSpinnericetea.setValue(0);
+//        jSpinnerlycheetea.setValue(0);
+//        jSpinnerlemontea.setValue(0);
+//        jSpinnermatchalatte.setValue(0);
+//        jSpinnerredvelvet.setValue(0);
+//        jSpinnertarolatte.setValue(0);
+//        jSpinnervanilalatte.setValue(0);
+//        jSpinnerchocolatte.setValue(0);
+//        
+////        jTextFieldTotalItem.setText("0");
+//        jTextFieldTotal.setText("0");
+//        jTextAreaHasil.setText(".");
+//        jCheckBoxKentang.setSelected(false);
+//        jCheckBoxamericano.setSelected(false);
+//        jCheckBoxcoffelatte.setSelected(false);
+//        jCheckBoxRotibakar.setSelected(false);
+//        jCheckBoxindomie.setSelected(false);
+//        jCheckBoxdimsum.setSelected(false);
+//        jCheckBoxwaffle.setSelected(false);
+//        jCheckBoxburger.setSelected(false);
+//        jCheckBoxspageti.setSelected(false);
+//        jCheckBoxonion.setSelected(false);
+//        jCheckBoxsosis.setSelected(false);
+//        jCheckBoxnasgor.setSelected(false);
+//        jCheckBoxicetea.setSelected(false);
+//        jCheckBoxlycheetea.setSelected(false);
+//        jCheckBoxlemontea.setSelected(false);
+//        jCheckBoxmatchalatte.setSelected(false);
+//        jCheckBoxredvelvet.setSelected(false);
+//        jCheckBoxtarolatte.setSelected(false);
+//        jCheckBoxvanilalatte.setSelected(false);
+//        jCheckBoxchocolatte.setSelected(false);
+//        jTerjual1.setText(Integer.toString(0));
+//        
+//    }
     
     //untuk membuat waktu realtime
     public void setTime(){
@@ -596,31 +655,7 @@ public class MenuView extends javax.swing.JFrame {
         }).start();
     }
     //menghitung total item, total, dan terjual
-    public void duedate(){
-        jTextFieldTotalItem.setText(String.valueOf(TotalItem));
-        jTextFieldTotal.setText(String.valueOf(Total));
-        jTerjual1.setText(Integer.toString(Terjual1));//masi belum bener karena kalo nambahin data nya ga bisa ketambah
-        jTerjual2.setText(Integer.toString(Terjual2));
-        jTerjual3.setText(Integer.toString(Terjual3));
-        jTerjual4.setText(Integer.toString(Terjual4));
-        jTerjual5.setText(Integer.toString(Terjual5));
-        jTerjual6.setText(Integer.toString(Terjual6));
-        jTerjual7.setText(Integer.toString(Terjual7));
-        jTerjual8.setText(Integer.toString(Terjual8));
-        jTerjual9.setText(Integer.toString(Terjual9));
-        jTerjual10.setText(Integer.toString(Terjual10));
-        jTerjual11.setText(Integer.toString(Terjual11));
-        jTerjual12.setText(Integer.toString(Terjual12));
-        jTerjual13.setText(Integer.toString(Terjual13));
-        jTerjual14.setText(Integer.toString(Terjual14));
-        jTerjual15.setText(Integer.toString(Terjual15));
-        jTerjual16.setText(Integer.toString(Terjual16));
-        jTerjual17.setText(Integer.toString(Terjual17));
-        jTerjual18.setText(Integer.toString(Terjual18));
-        jTerjual19.setText(Integer.toString(Terjual19));
-        jTerjual20.setText(Integer.toString(Terjual20));
-        
-    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -889,7 +924,7 @@ public class MenuView extends javax.swing.JFrame {
         jLabel178 = new javax.swing.JLabel();
         jPanel26 = new javax.swing.JPanel();
         jLabelimageChoco = new javax.swing.JLabel();
-        jLabel179 = new javax.swing.JLabel();
+        jLabelChocolatte = new javax.swing.JLabel();
         jLabel180 = new javax.swing.JLabel();
         jLabel181 = new javax.swing.JLabel();
         jLabel182 = new javax.swing.JLabel();
@@ -900,20 +935,25 @@ public class MenuView extends javax.swing.JFrame {
         jLabel185 = new javax.swing.JLabel();
         jTerjual20 = new javax.swing.JLabel();
         jLabel187 = new javax.swing.JLabel();
+        jPanel30 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableFeedback = new javax.swing.JTable();
         jPanel16 = new javax.swing.JPanel();
         btnOrder = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextFieldTotalItem = new javax.swing.JTextField();
+        txt_subtotal = new javax.swing.JLabel();
         jTextFieldTotal = new javax.swing.JTextField();
+        jTextFieldSubtotal = new javax.swing.JTextField();
+        jTextFieldtax = new javax.swing.JTextField();
+        jlabelTax = new javax.swing.JLabel();
+        jPanel29 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaHasil = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1444, 787));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setPreferredSize(new java.awt.Dimension(1444, 787));
@@ -1013,7 +1053,7 @@ public class MenuView extends javax.swing.JFrame {
         jLabel2.setText("Disukai  :");
 
         jTerjual1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTerjual1.setText("18");
+        jTerjual1.setText("190");
 
         jDisukai1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jDisukai1.setText("201");
@@ -1045,7 +1085,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jDisukai1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1080,7 +1120,7 @@ public class MenuView extends javax.swing.JFrame {
         jPanel6.setPreferredSize(new java.awt.Dimension(197, 250));
 
         jLabelRoti.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelRoti.setText("Roti Bakar");
+        jLabelRoti.setText("Roti Bakar       ");
 
         jLabel24.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel24.setText("Harga   :");
@@ -1141,7 +1181,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1236,7 +1276,7 @@ public class MenuView extends javax.swing.JFrame {
                                 .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSpinnerindomie, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jCheckBoxindomie))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1271,7 +1311,7 @@ public class MenuView extends javax.swing.JFrame {
         jPanel9.setPreferredSize(new java.awt.Dimension(197, 250));
 
         jLabelDimsum.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelDimsum.setText("Dimsum");
+        jLabelDimsum.setText("Dimsum           ");
 
         jLabel34.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel34.setText("Harga   :");
@@ -1330,7 +1370,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel71)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel72, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1358,14 +1398,14 @@ public class MenuView extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel71)
                     .addComponent(jLabel72))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 230, 230), 2));
         jPanel10.setPreferredSize(new java.awt.Dimension(197, 250));
 
         jLabelWaffle.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelWaffle.setText("Waffle");
+        jLabelWaffle.setText("Waffle                ");
 
         jLabel39.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel39.setText("Harga      :");
@@ -1424,7 +1464,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel75)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel76, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1459,7 +1499,7 @@ public class MenuView extends javax.swing.JFrame {
         jPanel11.setPreferredSize(new java.awt.Dimension(197, 250));
 
         jLabelBurger.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelBurger.setText("Burger");
+        jLabelBurger.setText("Burger             ");
 
         jLabel44.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel44.setText("Harga   :");
@@ -1517,7 +1557,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel79)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel80, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1537,7 +1577,7 @@ public class MenuView extends javax.swing.JFrame {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel47)
                     .addComponent(jCheckBoxburger))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTerjual6)
                     .addComponent(jLabel77))
@@ -1552,7 +1592,7 @@ public class MenuView extends javax.swing.JFrame {
         jPanel12.setPreferredSize(new java.awt.Dimension(197, 231));
 
         jLabelSpaghetti.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelSpaghetti.setText("Spaghetti");
+        jLabelSpaghetti.setText("Spaghetti          ");
 
         jLabel49.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel49.setText("Harga   :");
@@ -1610,7 +1650,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel83)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel84, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1630,7 +1670,7 @@ public class MenuView extends javax.swing.JFrame {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel52)
                     .addComponent(jCheckBoxspageti))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTerjual7)
                     .addComponent(jLabel81))
@@ -1645,7 +1685,7 @@ public class MenuView extends javax.swing.JFrame {
         jPanel13.setPreferredSize(new java.awt.Dimension(197, 231));
 
         jLabelOnionRing.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelOnionRing.setText("Onion Ring");
+        jLabelOnionRing.setText("Onion Ring       ");
 
         jLabel54.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel54.setText("Harga   :");
@@ -1703,7 +1743,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel87)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel88, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1731,14 +1771,14 @@ public class MenuView extends javax.swing.JFrame {
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel87)
                     .addComponent(jLabel88))
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
 
         jPanel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 230, 230), 2));
         jPanel14.setPreferredSize(new java.awt.Dimension(197, 231));
 
         jLabelSosisGoreng.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelSosisGoreng.setText("Sosis Goreng");
+        jLabelSosisGoreng.setText("Sosis Goreng     ");
 
         jLabel59.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel59.setText("Harga   :");
@@ -1796,7 +1836,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel91)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel92, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1824,14 +1864,14 @@ public class MenuView extends javax.swing.JFrame {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel91)
                     .addComponent(jLabel92))
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
 
         jPanel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 230, 230), 2));
         jPanel15.setPreferredSize(new java.awt.Dimension(197, 231));
 
         jLabelNasiGoreng.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelNasiGoreng.setText("Nasi Goreng");
+        jLabelNasiGoreng.setText("Nasi Goreng     ");
 
         jLabel64.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel64.setText("Harga   :");
@@ -1889,7 +1929,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel95)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel96, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1917,7 +1957,7 @@ public class MenuView extends javax.swing.JFrame {
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel95)
                     .addComponent(jLabel96))
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -2000,11 +2040,6 @@ public class MenuView extends javax.swing.JFrame {
         jLabel102.setText("Beli       :");
 
         jCheckBoxamericano.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jCheckBoxamericano.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxamericanoActionPerformed(evt);
-            }
-        });
 
         jLabel103.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel103.setText("Terjual   :");
@@ -2013,10 +2048,10 @@ public class MenuView extends javax.swing.JFrame {
         jLabel104.setText("Disukai  :");
 
         jTerjual11.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTerjual11.setText("0");
+        jTerjual11.setText("290");
 
         jdisukai11.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jdisukai11.setText("19");
+        jdisukai11.setText("190");
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -2045,7 +2080,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel104)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jdisukai11, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2080,7 +2115,7 @@ public class MenuView extends javax.swing.JFrame {
         jPanel18.setPreferredSize(new java.awt.Dimension(197, 250));
 
         jLabelCoffeLatte.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelCoffeLatte.setText("Coffe Latte");
+        jLabelCoffeLatte.setText("Coffe Latte         ");
 
         jLabel108.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel108.setText("Harga    :");
@@ -2097,11 +2132,6 @@ public class MenuView extends javax.swing.JFrame {
         jLabel111.setText("Beli       :");
 
         jCheckBoxcoffelatte.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jCheckBoxcoffelatte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxcoffelatteActionPerformed(evt);
-            }
-        });
 
         jLabel112.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel112.setText("Terjual   :");
@@ -2110,10 +2140,10 @@ public class MenuView extends javax.swing.JFrame {
         jLabel113.setText("Disukai  :");
 
         jTerjual12.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTerjual12.setText("0");
+        jTerjual12.setText("256");
 
         jLabel115.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel115.setText("18");
+        jLabel115.setText("168");
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -2142,7 +2172,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel113)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2177,7 +2207,7 @@ public class MenuView extends javax.swing.JFrame {
         jPanel19.setPreferredSize(new java.awt.Dimension(197, 250));
 
         jLabelIceTea.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelIceTea.setText("Ice Tea");
+        jLabelIceTea.setText("Ice Tea               ");
 
         jLabel117.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel117.setText("Harga    :");
@@ -2194,11 +2224,6 @@ public class MenuView extends javax.swing.JFrame {
         jLabel120.setText("Beli       :");
 
         jCheckBoxicetea.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jCheckBoxicetea.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxiceteaActionPerformed(evt);
-            }
-        });
 
         jLabel121.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel121.setText("Terjual   :");
@@ -2207,10 +2232,10 @@ public class MenuView extends javax.swing.JFrame {
         jLabel122.setText("Disukai  :");
 
         jTerjual13.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTerjual13.setText("0");
+        jTerjual13.setText("279");
 
         jLabel124.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel124.setText("22");
+        jLabel124.setText("186");
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
@@ -2239,7 +2264,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel122)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2274,7 +2299,7 @@ public class MenuView extends javax.swing.JFrame {
         jPanel20.setPreferredSize(new java.awt.Dimension(197, 250));
 
         jLabelLycheetea.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelLycheetea.setText("Lychee tea");
+        jLabelLycheetea.setText("Lychee tea          ");
 
         jLabel126.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel126.setText("Harga    :");
@@ -2291,11 +2316,6 @@ public class MenuView extends javax.swing.JFrame {
         jLabel129.setText("Beli       :");
 
         jCheckBoxlycheetea.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jCheckBoxlycheetea.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxlycheeteaActionPerformed(evt);
-            }
-        });
 
         jLabel130.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel130.setText("Terjual   :");
@@ -2304,10 +2324,10 @@ public class MenuView extends javax.swing.JFrame {
         jLabel131.setText("Disukai  :");
 
         jTerjual14.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTerjual14.setText("0");
+        jTerjual14.setText("178");
 
         jLabel133.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel133.setText("23");
+        jLabel133.setText("98");
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
@@ -2336,7 +2356,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel131)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel133, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2371,7 +2391,7 @@ public class MenuView extends javax.swing.JFrame {
         jPanel21.setPreferredSize(new java.awt.Dimension(197, 250));
 
         jLabelLemonTea.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelLemonTea.setText("Lemon Tea");
+        jLabelLemonTea.setText("Lemon Tea         ");
 
         jLabel135.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel135.setText("Harga    :");
@@ -2388,11 +2408,6 @@ public class MenuView extends javax.swing.JFrame {
         jLabel138.setText("Beli       :");
 
         jCheckBoxlemontea.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jCheckBoxlemontea.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxlemonteaActionPerformed(evt);
-            }
-        });
 
         jLabel139.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel139.setText("Terjual   :");
@@ -2401,10 +2416,10 @@ public class MenuView extends javax.swing.JFrame {
         jLabel140.setText("Disukai  :");
 
         jTerjual15.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTerjual15.setText("0");
+        jTerjual15.setText("245");
 
         jLabel142.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel142.setText("23");
+        jLabel142.setText("120");
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
@@ -2433,7 +2448,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel140)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel142, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2468,7 +2483,7 @@ public class MenuView extends javax.swing.JFrame {
         jPanel22.setPreferredSize(new java.awt.Dimension(197, 250));
 
         jLabelMatchaLatte.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelMatchaLatte.setText("Matcha Latte");
+        jLabelMatchaLatte.setText("Matcha Latte      ");
 
         jLabel144.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel144.setText("Harga    :");
@@ -2485,11 +2500,6 @@ public class MenuView extends javax.swing.JFrame {
         jLabel147.setText("Beli       :");
 
         jCheckBoxmatchalatte.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jCheckBoxmatchalatte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxmatchalatteActionPerformed(evt);
-            }
-        });
 
         jLabel148.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel148.setText("Terjual   :");
@@ -2498,10 +2508,10 @@ public class MenuView extends javax.swing.JFrame {
         jLabel149.setText("Disukai  :");
 
         jTerjual16.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTerjual16.setText("0");
+        jTerjual16.setText("234");
 
         jLabel151.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel151.setText("25");
+        jLabel151.setText("150");
 
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
@@ -2530,7 +2540,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel149)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel151, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2565,7 +2575,7 @@ public class MenuView extends javax.swing.JFrame {
         jPanel23.setPreferredSize(new java.awt.Dimension(197, 250));
 
         jLabelRedVelvet.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelRedVelvet.setText("Red velvet latte");
+        jLabelRedVelvet.setText("Red Velvet Latte ");
 
         jLabel153.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel153.setText("Harga    :");
@@ -2582,11 +2592,6 @@ public class MenuView extends javax.swing.JFrame {
         jLabel156.setText("Beli       :");
 
         jCheckBoxredvelvet.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jCheckBoxredvelvet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxredvelvetActionPerformed(evt);
-            }
-        });
 
         jLabel157.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel157.setText("Terjual   :");
@@ -2595,10 +2600,10 @@ public class MenuView extends javax.swing.JFrame {
         jLabel158.setText("Disukai  :");
 
         jTerjual17.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTerjual17.setText("0");
+        jTerjual17.setText("190");
 
         jLabel160.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel160.setText("21");
+        jLabel160.setText("210");
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -2627,7 +2632,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel158)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel160, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2662,7 +2667,7 @@ public class MenuView extends javax.swing.JFrame {
         jPanel24.setPreferredSize(new java.awt.Dimension(197, 250));
 
         jLabelTaroLatte.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelTaroLatte.setText("Taro Latte");
+        jLabelTaroLatte.setText("Taro Latte          ");
 
         jLabel162.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel162.setText("Harga    :");
@@ -2679,11 +2684,6 @@ public class MenuView extends javax.swing.JFrame {
         jLabel165.setText("Beli       :");
 
         jCheckBoxtarolatte.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jCheckBoxtarolatte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxtarolatteActionPerformed(evt);
-            }
-        });
 
         jLabel166.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel166.setText("Terjual   :");
@@ -2692,10 +2692,10 @@ public class MenuView extends javax.swing.JFrame {
         jLabel167.setText("Disukai  :");
 
         jTerjual18.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTerjual18.setText("0");
+        jTerjual18.setText("280");
 
         jLabel169.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel169.setText("20");
+        jLabel169.setText("128");
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -2724,7 +2724,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel167)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel169, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2759,7 +2759,7 @@ public class MenuView extends javax.swing.JFrame {
         jPanel25.setPreferredSize(new java.awt.Dimension(197, 250));
 
         jLabelVanilaLatte.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabelVanilaLatte.setText("Vanila Latte");
+        jLabelVanilaLatte.setText("Vanila Latte       ");
 
         jLabel171.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel171.setText("Harga    :");
@@ -2776,11 +2776,6 @@ public class MenuView extends javax.swing.JFrame {
         jLabel174.setText("Beli       :");
 
         jCheckBoxvanilalatte.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jCheckBoxvanilalatte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxvanilalatteActionPerformed(evt);
-            }
-        });
 
         jLabel175.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel175.setText("Terjual   :");
@@ -2789,10 +2784,10 @@ public class MenuView extends javax.swing.JFrame {
         jLabel176.setText("Disukai  :");
 
         jTerjual19.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTerjual19.setText("0");
+        jTerjual19.setText("260");
 
         jLabel178.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel178.setText("27");
+        jLabel178.setText("170");
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
@@ -2821,7 +2816,7 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel176)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel178, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel25Layout.setVerticalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2855,8 +2850,8 @@ public class MenuView extends javax.swing.JFrame {
         jPanel26.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 230, 230), 2));
         jPanel26.setPreferredSize(new java.awt.Dimension(197, 250));
 
-        jLabel179.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel179.setText("Choco latte");
+        jLabelChocolatte.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabelChocolatte.setText("Choco latte         ");
 
         jLabel180.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel180.setText("Harga    :");
@@ -2873,11 +2868,6 @@ public class MenuView extends javax.swing.JFrame {
         jLabel183.setText("Beli       :");
 
         jCheckBoxchocolatte.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jCheckBoxchocolatte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxchocolatteActionPerformed(evt);
-            }
-        });
 
         jLabel184.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel184.setText("Terjual   :");
@@ -2886,10 +2876,10 @@ public class MenuView extends javax.swing.JFrame {
         jLabel185.setText("Disukai  :");
 
         jTerjual20.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTerjual20.setText("0");
+        jTerjual20.setText("189");
 
         jLabel187.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jLabel187.setText("24");
+        jLabel187.setText("100");
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
@@ -2899,7 +2889,7 @@ public class MenuView extends javax.swing.JFrame {
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel179)
+                    .addComponent(jLabelChocolatte)
                     .addGroup(jPanel26Layout.createSequentialGroup()
                         .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel182, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
@@ -2918,14 +2908,14 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jLabel185)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel187, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel26Layout.setVerticalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addComponent(jLabelimageChoco, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel179)
+                .addComponent(jLabelChocolatte)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel180)
@@ -2983,33 +2973,60 @@ public class MenuView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                    .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                    .addComponent(jPanel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                    .addComponent(jPanel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
+                    .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                    .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                    .addComponent(jPanel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                    .addComponent(jPanel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                    .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                    .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                    .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
+                    .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                    .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                    .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                    .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE))
                 .addGap(13, 13, 13))
         );
 
         jTabbedPane1.addTab("MINUMAN", jPanel4);
+
+        jTableFeedback.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTableFeedback);
+
+        javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
+        jPanel30.setLayout(jPanel30Layout);
+        jPanel30Layout.setHorizontalGroup(
+            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel30Layout.createSequentialGroup()
+                .addGap(271, 271, 271)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(311, Short.MAX_VALUE))
+        );
+        jPanel30Layout.setVerticalGroup(
+            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel30Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(113, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("FEEDBACK", jPanel30);
 
         jPanel16.setPreferredSize(new java.awt.Dimension(240, 55));
 
         btnOrder.setBackground(new java.awt.Color(0, 255, 153));
         btnOrder.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnOrder.setText("ORDER");
-        btnOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrderActionPerformed(evt);
-            }
-        });
 
         btnReset.setBackground(new java.awt.Color(255, 51, 51));
         btnReset.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -3024,7 +3041,7 @@ public class MenuView extends javax.swing.JFrame {
                 .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReset)
-                .addContainerGap(849, Short.MAX_VALUE))
+                .addContainerGap(835, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3040,23 +3057,30 @@ public class MenuView extends javax.swing.JFrame {
 
         jPanel27.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel13.setText("TOTAL ITEM ");
-
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
         jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel14.setText("TOTAL");
 
-        jTextFieldTotalItem.setEditable(false);
-        jTextFieldTotalItem.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jTextFieldTotalItem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextFieldTotalItem.setText("0");
+        txt_subtotal.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        txt_subtotal.setText("SUB TOTAL");
 
         jTextFieldTotal.setEditable(false);
         jTextFieldTotal.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jTextFieldTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextFieldTotal.setText("0");
+
+        jTextFieldSubtotal.setEditable(false);
+        jTextFieldSubtotal.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jTextFieldSubtotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldSubtotal.setText("0");
+
+        jTextFieldtax.setEditable(false);
+        jTextFieldtax.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jTextFieldtax.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldtax.setText("0");
+
+        jlabelTax.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        jlabelTax.setText("TAX");
 
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
         jPanel27.setLayout(jPanel27Layout);
@@ -3065,32 +3089,56 @@ public class MenuView extends javax.swing.JFrame {
             .addGroup(jPanel27Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
+                    .addComponent(jlabelTax, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldTotal)
-                    .addComponent(jTextFieldTotalItem))
+                    .addComponent(jTextFieldSubtotal)
+                    .addGroup(jPanel27Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jTextFieldTotal))
+                    .addComponent(jTextFieldtax))
                 .addContainerGap())
         );
         jPanel27Layout.setVerticalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel27Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addGap(7, 7, 7)
+                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jTextFieldTotalItem, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                    .addComponent(jTextFieldtax, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlabelTax, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
-                .addGap(15, 15, 15))
+                    .addComponent(jLabel14)
+                    .addComponent(jTextFieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         jTextAreaHasil.setEditable(false);
         jTextAreaHasil.setColumns(20);
         jTextAreaHasil.setRows(5);
         jScrollPane1.setViewportView(jTextAreaHasil);
+
+        javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
+        jPanel29.setLayout(jPanel29Layout);
+        jPanel29Layout.setHorizontalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel29Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel29Layout.setVerticalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -3099,24 +3147,24 @@ public class MenuView extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+                    .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(16, 16, 16))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1449, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1459, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -3162,203 +3210,12 @@ public class MenuView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 762, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 748, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    //Minuman
-    private void jCheckBoxamericanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxamericanoActionPerformed
-        //americano coffe Rp18000
-        int qty = Integer.parseInt(jSpinneramericano.getValue().toString());
-        if (qtyIsZero(qty) && jCheckBoxamericano.isSelected()){
-            x++;
-            if(x==1){
-               SmartCafe(); 
-            }
-            int harga = qty*18000;
-            Total += harga;
-            TotalItem++;
-            Terjual11++;
-            jTextAreaHasil.setText(jTextAreaHasil.getText() + "     "+ x + ". " + jLabelAmericano.getText()+"\t "+qty +"\t"+harga+"\n");
-            duedate();
-        }else {
-            jCheckBoxamericano.setSelected(false);
-        }
-    }//GEN-LAST:event_jCheckBoxamericanoActionPerformed
-
-    private void jCheckBoxcoffelatteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxcoffelatteActionPerformed
-        //coffe latte Rp18000
-        int qty = Integer.parseInt(jSpinnercoffelatte.getValue().toString());
-        if (qtyIsZero(qty) && jCheckBoxcoffelatte.isSelected()){
-            x++;
-            if(x==1){
-               SmartCafe(); 
-            }
-            int harga = qty*18000;
-            Total += harga;
-            TotalItem++;
-            Terjual12++;
-            jTextAreaHasil.setText(jTextAreaHasil.getText() + "     "+ x + ". " + jLabelCoffeLatte.getText()+"\t "+qty +"\t"+harga+"\n");
-            duedate();
-        }else {
-            jCheckBoxcoffelatte.setSelected(false);
-        }
-    }//GEN-LAST:event_jCheckBoxcoffelatteActionPerformed
-
-    private void jCheckBoxiceteaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxiceteaActionPerformed
-        //Ice Tea Rp15000
-        int qty = Integer.parseInt(jSpinnericetea.getValue().toString());
-        if (qtyIsZero(qty) && jCheckBoxicetea.isSelected()){
-            x++;
-            if(x==1){
-               SmartCafe(); 
-            }
-            int harga = qty*15000;
-            Total += harga;
-            TotalItem++;
-            Terjual13++;
-            jTextAreaHasil.setText(jTextAreaHasil.getText() + "     "+ x + ". " + jLabelIceTea.getText()+"\t\t "+qty +"\t"+harga+"\n");
-            duedate();
-        }else {
-            jCheckBoxicetea.setSelected(false);
-        }
-        
-    }//GEN-LAST:event_jCheckBoxiceteaActionPerformed
-
-    private void jCheckBoxlycheeteaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxlycheeteaActionPerformed
-        //lychee tea Rp 15000
-        int qty = Integer.parseInt(jSpinnerlycheetea.getValue().toString());
-        if (qtyIsZero(qty) && jCheckBoxlycheetea.isSelected()){
-            x++;
-            if(x==1){
-               SmartCafe(); 
-            }
-            int harga = qty*15000;
-            Total += harga;
-            TotalItem++;
-            Terjual14++;
-            jTextAreaHasil.setText(jTextAreaHasil.getText() + "     "+ x + ". " + jLabelLycheetea.getText()+"\t "+qty +"\t"+harga+"\n");
-            duedate();
-        }else {
-            jCheckBoxlycheetea.setSelected(false);
-        }
-    }//GEN-LAST:event_jCheckBoxlycheeteaActionPerformed
-
-    private void jCheckBoxlemonteaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxlemonteaActionPerformed
-        //Lemon Tea Rp15000
-        int qty = Integer.parseInt(jSpinnerlemontea.getValue().toString());
-        if (qtyIsZero(qty) && jCheckBoxlemontea.isSelected()){
-            x++;
-            if(x==1){
-               SmartCafe(); 
-            }
-            int harga = qty*15000;
-            Total += harga;
-            TotalItem++;
-            Terjual15++;
-            jTextAreaHasil.setText(jTextAreaHasil.getText() + "     "+ x + ". " + jLabelLemonTea.getText()+"\t "+qty +"\t"+harga+"\n");
-            duedate();
-        }else {
-            jCheckBoxlemontea.setSelected(false);
-        }
-    }//GEN-LAST:event_jCheckBoxlemonteaActionPerformed
-
-    private void jCheckBoxmatchalatteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxmatchalatteActionPerformed
-        //Matcha latte Rp18000
-        int qty = Integer.parseInt(jSpinnermatchalatte.getValue().toString());
-        if (qtyIsZero(qty) && jCheckBoxmatchalatte.isSelected()){
-            x++;
-            if(x==1){
-               SmartCafe(); 
-            }
-            int harga = qty*18000;
-            Total += harga;
-            TotalItem++;
-            Terjual16++;
-            jTextAreaHasil.setText(jTextAreaHasil.getText() + "     "+ x + ". " + jLabelMatchaLatte.getText()+"\t "+qty +"\t"+harga+"\n");
-            duedate();
-        }else {
-            jCheckBoxmatchalatte.setSelected(false);
-        }
-    }//GEN-LAST:event_jCheckBoxmatchalatteActionPerformed
-
-    private void jCheckBoxredvelvetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxredvelvetActionPerformed
-        //Red velvet latte Rp 18000
-        int qty = Integer.parseInt(jSpinnerredvelvet.getValue().toString());
-        if (qtyIsZero(qty) && jCheckBoxredvelvet.isSelected()){
-            x++;
-            if(x==1){
-               SmartCafe(); 
-            }
-            int harga = qty*18000;
-            Total += harga;
-            TotalItem++;
-            Terjual17++;
-            jTextAreaHasil.setText(jTextAreaHasil.getText() + "     "+ x + ". " + jLabelRedVelvet.getText()+"\t "+qty +"\t"+harga+"\n");
-            duedate();
-        }else {
-            jCheckBoxredvelvet.setSelected(false);
-        }
-    }//GEN-LAST:event_jCheckBoxredvelvetActionPerformed
-
-    private void jCheckBoxtarolatteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxtarolatteActionPerformed
-        //Taro latte Rp18000
-        int qty = Integer.parseInt(jSpinnertarolatte.getValue().toString());
-        if (qtyIsZero(qty) && jCheckBoxtarolatte.isSelected()){
-            x++;
-            if(x==1){
-               SmartCafe(); 
-            }
-            int harga = qty*18000;
-            Total += harga;
-            TotalItem++;
-            Terjual18++;
-            jTextAreaHasil.setText(jTextAreaHasil.getText() + "     "+ x + ". " + jLabelTaroLatte.getText()+"\t "+qty +"\t"+harga+"\n");
-            duedate();
-        }else {
-            jCheckBoxtarolatte.setSelected(false);
-        }
-    }//GEN-LAST:event_jCheckBoxtarolatteActionPerformed
-
-    private void jCheckBoxvanilalatteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxvanilalatteActionPerformed
-        //Vanilla Latte Rp18000
-        int qty = Integer.parseInt(jSpinnervanilalatte.getValue().toString());
-        if (qtyIsZero(qty) && jCheckBoxvanilalatte.isSelected()){
-            x++;
-            if(x==1){
-               SmartCafe(); 
-            }
-            int harga = qty*18000;
-            Total += harga;
-            TotalItem++;
-            Terjual19++;
-            jTextAreaHasil.setText(jTextAreaHasil.getText() + "     "+ x + ". " + jLabelVanilaLatte.getText()+"\t "+qty +"\t"+harga+"\n");
-            duedate();
-        }else {
-            jCheckBoxvanilalatte.setSelected(false);
-        }
-    }//GEN-LAST:event_jCheckBoxvanilalatteActionPerformed
-
-    private void jCheckBoxchocolatteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxchocolatteActionPerformed
-        //choco latte Rp18000
-        int qty = Integer.parseInt(jSpinnerchocolatte.getValue().toString());
-        if (qtyIsZero(qty) && jCheckBoxchocolatte.isSelected()){
-            x++;
-            if(x==1){
-               SmartCafe(); 
-            }
-            int harga = qty*18000;
-            Total += harga;
-            TotalItem++;
-            Terjual20++;
-            jTextAreaHasil.setText(jTextAreaHasil.getText() + "     "+ x + ". " + jLabel179.getText()+"\t "+qty +"\t"+harga+"\n");
-            duedate();
-        }else {
-            jCheckBoxchocolatte.setSelected(false);
-        }
-    }//GEN-LAST:event_jCheckBoxchocolatteActionPerformed
     //untuk menggerakan windows nya
     int xx, xy;
     private void jPanel28MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel28MousePressed
@@ -3371,44 +3228,17 @@ public class MenuView extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x-xx, y-xy);
     }//GEN-LAST:event_jPanel28MouseDragged
-
-    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-        // TODO add your handling code here:
-        if(Total == 0){
-            JOptionPane.showMessageDialog(null, "Anda belum memilih item, Mohon Masukkan Item terlebih dahulu!");
-        }else{
-            //ketika button order di klik, maka user di haruskan memasukan data pesanan agar ada di tampilan struk(gimana carana?)
-            CheckOutMenu m = new CheckOutMenu(null,true);
-            m.setVisible(true);
-            
-            jTextAreaHasil.setText(jTextAreaHasil.getText()
-                    +"\n******************************************************\n"
-                    +"Nama : " + m.getNama() + "\n"
-                    +"No Meja : " + m.getNoMeja() + "\n"
-                    +"Catatan : " + m.getCatatan() + "\n"
-                    + "Jenis Pesanan : " + m.getJenisPesanan() + "\n"
-                    +"Total Item: " + TotalItem + "\n"
-                    +"Total: " + Total + "\n"
-                    +"\n*********** Tunggu Pesanan mu jadi ya :) *************\n"
-                    
-            );
-            btnOrder.setEnabled(false);
-        }
-    }//GEN-LAST:event_btnOrderActionPerformed
     
     
     //menampilkan data ke struk
     public void SmartCafe(){  
-        jTextAreaHasil.setText("******************** SMART CAFE ********************\n"
+        jTextAreaHasil.setText("******************** SMART CAFE ************************\n"
                 +" Time:  "+jTxtTime.getText() + "    Date:  "+jTxtDate.getText()+"\n"
-                +" Purchase Id:  " + idpesanan + "\n"
-                +"******************************************************\n"
-                +" Nama Item:\t\t"+"Qty "+"               Harga(Rp)\n");
+                +" Purchase Id:  " + idpesanan++ + "\n"
+                +"**********************************************************\n"
+                +"Nama Item:\t\t"+"Qty"+"\tHarga(Rp)\n");
     }
     
-    
-    
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOrder;
@@ -3459,7 +3289,6 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel127;
     private javax.swing.JLabel jLabel128;
     private javax.swing.JLabel jLabel129;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel130;
     private javax.swing.JLabel jLabel131;
     private javax.swing.JLabel jLabel133;
@@ -3499,7 +3328,6 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel175;
     private javax.swing.JLabel jLabel176;
     private javax.swing.JLabel jLabel178;
-    private javax.swing.JLabel jLabel179;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel180;
     private javax.swing.JLabel jLabel181;
@@ -3579,6 +3407,7 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel99;
     private javax.swing.JLabel jLabelAmericano;
     private javax.swing.JLabel jLabelBurger;
+    private javax.swing.JLabel jLabelChocolatte;
     private javax.swing.JLabel jLabelCoffeLatte;
     private javax.swing.JLabel jLabelDimsum;
     private javax.swing.JLabel jLabelIceTea;
@@ -3637,7 +3466,9 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -3645,6 +3476,7 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSpinner jSpinnerKentang;
     private javax.swing.JSpinner jSpinnerRotiBakar;
     private javax.swing.JSpinner jSpinneramericano;
@@ -3666,6 +3498,7 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinnervanilalatte;
     private javax.swing.JSpinner jSpinnerwaffle;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTableFeedback;
     private javax.swing.JLabel jTerjual1;
     private javax.swing.JLabel jTerjual10;
     private javax.swing.JLabel jTerjual11;
@@ -3687,10 +3520,13 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JLabel jTerjual8;
     private javax.swing.JLabel jTerjual9;
     private javax.swing.JTextArea jTextAreaHasil;
+    private javax.swing.JTextField jTextFieldSubtotal;
     private javax.swing.JTextField jTextFieldTotal;
-    private javax.swing.JTextField jTextFieldTotalItem;
+    private javax.swing.JTextField jTextFieldtax;
     private javax.swing.JLabel jTxtDate;
     private javax.swing.JLabel jTxtTime;
     private javax.swing.JLabel jdisukai11;
+    private javax.swing.JLabel jlabelTax;
+    private javax.swing.JLabel txt_subtotal;
     // End of variables declaration//GEN-END:variables
 }
